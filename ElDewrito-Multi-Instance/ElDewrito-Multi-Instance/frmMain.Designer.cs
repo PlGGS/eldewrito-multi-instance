@@ -28,26 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tctMain = new System.Windows.Forms.TabControl();
             this.tabProfiles = new System.Windows.Forms.TabPage();
+            this.lblProfiles = new System.Windows.Forms.Label();
+            this.clbProfiles = new System.Windows.Forms.CheckedListBox();
             this.tabSettings = new System.Windows.Forms.TabPage();
             this.tabLaunch = new System.Windows.Forms.TabPage();
-            this.tabControl1.SuspendLayout();
+            this.btnRemoveProfile = new System.Windows.Forms.Button();
+            this.btnAddProfile = new System.Windows.Forms.Button();
+            this.btnReloadProfiles = new System.Windows.Forms.Button();
+            this.tctMain.SuspendLayout();
+            this.tabProfiles.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tctMain
             // 
-            this.tabControl1.Controls.Add(this.tabProfiles);
-            this.tabControl1.Controls.Add(this.tabSettings);
-            this.tabControl1.Controls.Add(this.tabLaunch);
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(425, 295);
-            this.tabControl1.TabIndex = 0;
+            this.tctMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tctMain.Controls.Add(this.tabProfiles);
+            this.tctMain.Controls.Add(this.tabSettings);
+            this.tctMain.Controls.Add(this.tabLaunch);
+            this.tctMain.Location = new System.Drawing.Point(0, 0);
+            this.tctMain.Name = "tctMain";
+            this.tctMain.SelectedIndex = 0;
+            this.tctMain.Size = new System.Drawing.Size(425, 295);
+            this.tctMain.TabIndex = 0;
             // 
             // tabProfiles
             // 
+            this.tabProfiles.Controls.Add(this.btnReloadProfiles);
+            this.tabProfiles.Controls.Add(this.btnAddProfile);
+            this.tabProfiles.Controls.Add(this.btnRemoveProfile);
+            this.tabProfiles.Controls.Add(this.lblProfiles);
+            this.tabProfiles.Controls.Add(this.clbProfiles);
             this.tabProfiles.Location = new System.Drawing.Point(4, 22);
             this.tabProfiles.Name = "tabProfiles";
             this.tabProfiles.Padding = new System.Windows.Forms.Padding(3);
@@ -55,6 +69,28 @@
             this.tabProfiles.TabIndex = 0;
             this.tabProfiles.Text = "Profiles";
             this.tabProfiles.UseVisualStyleBackColor = true;
+            // 
+            // lblProfiles
+            // 
+            this.lblProfiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblProfiles.Location = new System.Drawing.Point(136, 5);
+            this.lblProfiles.Name = "lblProfiles";
+            this.lblProfiles.Size = new System.Drawing.Size(272, 85);
+            this.lblProfiles.TabIndex = 1;
+            this.lblProfiles.Text = "Profiles are stored in your Halo Online installation directory as dewrito_prefs_\'" +
+    "profilen ame\'.cfg.\r\n\r\nTo use a profile, make sure it\'s checked!\r\n\r\nYou can have " +
+    "up to eight profiles in use at once.";
+            // 
+            // clbProfiles
+            // 
+            this.clbProfiles.Dock = System.Windows.Forms.DockStyle.Left;
+            this.clbProfiles.FormattingEnabled = true;
+            this.clbProfiles.Location = new System.Drawing.Point(3, 3);
+            this.clbProfiles.Name = "clbProfiles";
+            this.clbProfiles.Size = new System.Drawing.Size(125, 263);
+            this.clbProfiles.TabIndex = 0;
             // 
             // tabSettings
             // 
@@ -75,27 +111,64 @@
             this.tabLaunch.Text = "Launch";
             this.tabLaunch.UseVisualStyleBackColor = true;
             // 
+            // btnRemoveProfile
+            // 
+            this.btnRemoveProfile.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnRemoveProfile.Location = new System.Drawing.Point(128, 243);
+            this.btnRemoveProfile.Name = "btnRemoveProfile";
+            this.btnRemoveProfile.Size = new System.Drawing.Size(286, 23);
+            this.btnRemoveProfile.TabIndex = 4;
+            this.btnRemoveProfile.Text = "Remove selected profile";
+            this.btnRemoveProfile.UseVisualStyleBackColor = true;
+            this.btnRemoveProfile.Click += new System.EventHandler(this.btnRemoveProfile_Click);
+            // 
+            // btnAddProfile
+            // 
+            this.btnAddProfile.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnAddProfile.Location = new System.Drawing.Point(128, 220);
+            this.btnAddProfile.Name = "btnAddProfile";
+            this.btnAddProfile.Size = new System.Drawing.Size(286, 23);
+            this.btnAddProfile.TabIndex = 6;
+            this.btnAddProfile.Text = "Add profile";
+            this.btnAddProfile.UseVisualStyleBackColor = true;
+            // 
+            // btnReloadProfiles
+            // 
+            this.btnReloadProfiles.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnReloadProfiles.Location = new System.Drawing.Point(128, 197);
+            this.btnReloadProfiles.Name = "btnReloadProfiles";
+            this.btnReloadProfiles.Size = new System.Drawing.Size(286, 23);
+            this.btnReloadProfiles.TabIndex = 7;
+            this.btnReloadProfiles.Text = "Reload profiles";
+            this.btnReloadProfiles.UseVisualStyleBackColor = true;
+            this.btnReloadProfiles.Click += new System.EventHandler(this.btnReloadProfiles_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 294);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tctMain);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmMain";
             this.Text = "ElDewrito Multi Instance";
-            this.tabControl1.ResumeLayout(false);
+            this.tctMain.ResumeLayout(false);
+            this.tabProfiles.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tctMain;
         private System.Windows.Forms.TabPage tabProfiles;
         private System.Windows.Forms.TabPage tabSettings;
         private System.Windows.Forms.TabPage tabLaunch;
+        private System.Windows.Forms.CheckedListBox clbProfiles;
+        private System.Windows.Forms.Label lblProfiles;
+        private System.Windows.Forms.Button btnReloadProfiles;
+        private System.Windows.Forms.Button btnAddProfile;
+        private System.Windows.Forms.Button btnRemoveProfile;
     }
 }
 

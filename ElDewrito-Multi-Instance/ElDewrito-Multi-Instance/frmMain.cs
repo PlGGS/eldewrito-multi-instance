@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,15 +13,36 @@ namespace ElDewrito_Multi_Instance
 {
     public partial class frmMain : Form
     {
+        string executableDirectoryPath;
+        ProfilesManager profilesManager;
+        SettingsManager settingsManager;
+        ProcessManager processManager;
+
         public frmMain()
         {
             InitializeComponent();
 
             Icon = Properties.Resources.logo;
+            executableDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
 
-            ProfilesManager profilesManager = new ProfilesManager();
-            SettingsManager settingsManager = new SettingsManager(profilesManager);
-            ProcessManager processManager = new ProcessManager();
+            settingsManager = new SettingsManager(executableDirectoryPath);
+            profilesManager = new ProfilesManager(executableDirectoryPath, settingsManager, clbProfiles);
+            processManager = new ProcessManager(executableDirectoryPath, profilesManager, settingsManager);
+        }
+
+        private void btnReloadProfiles_Click(object sender, EventArgs e)
+        {
+            profilesManager.ReloadProfiles();
+        }
+
+        private void btnAddProfile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRemoveProfile_Click(object sender, EventArgs e)
+        {
+            profilesManager.RemoveProfile();
         }
     }
 }
