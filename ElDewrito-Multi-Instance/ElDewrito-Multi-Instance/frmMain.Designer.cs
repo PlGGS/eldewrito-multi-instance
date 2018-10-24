@@ -30,13 +30,13 @@
         {
             this.tctMain = new System.Windows.Forms.TabControl();
             this.tabProfiles = new System.Windows.Forms.TabPage();
+            this.btnReloadProfiles = new System.Windows.Forms.Button();
+            this.btnAddProfile = new System.Windows.Forms.Button();
+            this.btnRemoveProfile = new System.Windows.Forms.Button();
             this.lblProfiles = new System.Windows.Forms.Label();
             this.clbProfiles = new System.Windows.Forms.CheckedListBox();
             this.tabSettings = new System.Windows.Forms.TabPage();
             this.tabLaunch = new System.Windows.Forms.TabPage();
-            this.btnRemoveProfile = new System.Windows.Forms.Button();
-            this.btnAddProfile = new System.Windows.Forms.Button();
-            this.btnReloadProfiles = new System.Windows.Forms.Button();
             this.tctMain.SuspendLayout();
             this.tabProfiles.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +69,39 @@
             this.tabProfiles.TabIndex = 0;
             this.tabProfiles.Text = "Profiles";
             this.tabProfiles.UseVisualStyleBackColor = true;
+            this.tabProfiles.Resize += new System.EventHandler(this.tabProfiles_Resize);
+            // 
+            // btnReloadProfiles
+            // 
+            this.btnReloadProfiles.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnReloadProfiles.Location = new System.Drawing.Point(128, 197);
+            this.btnReloadProfiles.Name = "btnReloadProfiles";
+            this.btnReloadProfiles.Size = new System.Drawing.Size(286, 23);
+            this.btnReloadProfiles.TabIndex = 7;
+            this.btnReloadProfiles.Text = "Reload profiles";
+            this.btnReloadProfiles.UseVisualStyleBackColor = true;
+            this.btnReloadProfiles.Click += new System.EventHandler(this.btnReloadProfiles_Click);
+            // 
+            // btnAddProfile
+            // 
+            this.btnAddProfile.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnAddProfile.Location = new System.Drawing.Point(128, 220);
+            this.btnAddProfile.Name = "btnAddProfile";
+            this.btnAddProfile.Size = new System.Drawing.Size(286, 23);
+            this.btnAddProfile.TabIndex = 6;
+            this.btnAddProfile.Text = "Add profile";
+            this.btnAddProfile.UseVisualStyleBackColor = true;
+            // 
+            // btnRemoveProfile
+            // 
+            this.btnRemoveProfile.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnRemoveProfile.Location = new System.Drawing.Point(128, 243);
+            this.btnRemoveProfile.Name = "btnRemoveProfile";
+            this.btnRemoveProfile.Size = new System.Drawing.Size(286, 23);
+            this.btnRemoveProfile.TabIndex = 4;
+            this.btnRemoveProfile.Text = "Remove selected profile";
+            this.btnRemoveProfile.UseVisualStyleBackColor = true;
+            this.btnRemoveProfile.Click += new System.EventHandler(this.btnRemoveProfile_Click);
             // 
             // lblProfiles
             // 
@@ -110,38 +143,6 @@
             this.tabLaunch.TabIndex = 2;
             this.tabLaunch.Text = "Launch";
             this.tabLaunch.UseVisualStyleBackColor = true;
-            // 
-            // btnRemoveProfile
-            // 
-            this.btnRemoveProfile.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnRemoveProfile.Location = new System.Drawing.Point(128, 243);
-            this.btnRemoveProfile.Name = "btnRemoveProfile";
-            this.btnRemoveProfile.Size = new System.Drawing.Size(286, 23);
-            this.btnRemoveProfile.TabIndex = 4;
-            this.btnRemoveProfile.Text = "Remove selected profile";
-            this.btnRemoveProfile.UseVisualStyleBackColor = true;
-            this.btnRemoveProfile.Click += new System.EventHandler(this.btnRemoveProfile_Click);
-            // 
-            // btnAddProfile
-            // 
-            this.btnAddProfile.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnAddProfile.Location = new System.Drawing.Point(128, 220);
-            this.btnAddProfile.Name = "btnAddProfile";
-            this.btnAddProfile.Size = new System.Drawing.Size(286, 23);
-            this.btnAddProfile.TabIndex = 6;
-            this.btnAddProfile.Text = "Add profile";
-            this.btnAddProfile.UseVisualStyleBackColor = true;
-            // 
-            // btnReloadProfiles
-            // 
-            this.btnReloadProfiles.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnReloadProfiles.Location = new System.Drawing.Point(128, 197);
-            this.btnReloadProfiles.Name = "btnReloadProfiles";
-            this.btnReloadProfiles.Size = new System.Drawing.Size(286, 23);
-            this.btnReloadProfiles.TabIndex = 7;
-            this.btnReloadProfiles.Text = "Reload profiles";
-            this.btnReloadProfiles.UseVisualStyleBackColor = true;
-            this.btnReloadProfiles.Click += new System.EventHandler(this.btnReloadProfiles_Click);
             // 
             // frmMain
             // 

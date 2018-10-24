@@ -44,5 +44,10 @@ namespace ElDewrito_Multi_Instance
         {
             profilesManager.RemoveProfile();
         }
+
+        private void tabProfiles_Resize(object sender, EventArgs e)
+        {
+            clbProfiles.Bounds = new Rectangle(clbProfiles.Location, new Size(clbProfiles.Bounds.Width, tabProfiles.Bounds.Height));
+        }
     }
 }
