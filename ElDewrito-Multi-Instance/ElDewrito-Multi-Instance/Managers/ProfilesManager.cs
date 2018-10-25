@@ -97,7 +97,7 @@ namespace ElDewrito_Multi_Instance
                 {
                     if (currentLineNum == lineNumToEdit)
                     {
-                        writer.WriteLine(lineToWrite);
+                        writer.WriteLine($"{lineToWrite.Substring(0, lineToWrite.IndexOf(' '))} \"{newPrefVal}\"");
                     }
                     else
                     {
@@ -228,7 +228,12 @@ namespace ElDewrito_Multi_Instance
                 Console.WriteLine($"Wrote {profileName}'s {value} to {setting} at line {line}");
             }
         }
-        
+
+        public void AddProfile()
+        {
+
+        }
+
         public void RemoveProfile()
         {
 

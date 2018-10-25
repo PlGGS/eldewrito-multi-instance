@@ -37,7 +37,7 @@ namespace ElDewrito_Multi_Instance
 
         private void btnAddProfile_Click(object sender, EventArgs e)
         {
-
+            profilesManager.AddProfile();
         }
 
         private void btnRemoveProfile_Click(object sender, EventArgs e)
