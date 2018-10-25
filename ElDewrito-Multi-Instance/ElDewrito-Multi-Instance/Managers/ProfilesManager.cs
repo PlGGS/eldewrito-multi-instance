@@ -30,11 +30,14 @@ namespace ElDewrito_Multi_Instance
         private void InitializeProfiles()
         {
             Profiles = new Dictionary<string, string>();
-            string[] cfgFiles = Directory.GetFiles(executableDirectoryPath, "*.cfg");
-            Console.WriteLine(cfgFiles.Length);
-            List<string> configFiles = Directory.GetFiles(executableDirectoryPath, "*.cfg", SearchOption.TopDirectoryOnly).OfType<string>().ToList();
+            List<string> configFilesWithPath = Directory.GetFiles(executableDirectoryPath, "*.cfg", SearchOption.TopDirectoryOnly).OfType<string>().ToList();
+            List<string> configFiles = new List<string>();
+            for (int i = 0; i < configFilesWithPath.Count; i++)
+            {
+                configFiles.Add(configFilesWithPath[i].Substring(configFilesWithPath[i].LastIndexOf('\\') + 1));
+            }
 
-            if (configFiles.Count == 0)
+            if (configFilesWithPath.Count == 0)
             {
                 MessageBox.Show("Please launch Eldewrito at least once before using Eldewrito Multi Instance!", "Eldewrito Multi Instance");
                 //TODO figure out why configFiles is empty and then after it's not do: Environment.Exit(0);
@@ -43,23 +46,24 @@ namespace ElDewrito_Multi_Instance
             string playerName = ReadPreferenceValue(configFiles[configFiles.IndexOf("dewrito_prefs.cfg")], "Player.Name");
 
             //check if _username_in_file.cfg is in the list of files
-            if (!configFiles.Contains($"dewrito_prefs_{playerName}.cfg"))
+            if (!configFiles.Contains($"dewrito_prefs_{playerName.Substring(1, playerName.Length - 2)}.cfg"))
             {
-                File.Copy("dewrito_prefs.cfg", $"dewrito_prefs_{playerName}.cfg");
-                configFiles.Add($"dewrito_prefs_{playerName}.cfg");
+                File.Copy(configFilesWithPath[configFiles.IndexOf("dewrito_prefs.cfg")], $"{executableDirectoryPath}dewrito_prefs_{playerName.Substring(1, playerName.Length - 2)}.cfg");
+                configFiles.Add($"dewrito_prefs_{playerName.Substring(1, playerName.Length - 2)}.cfg");
             }
 
             foreach (string file in configFiles)
             {
-                Console.WriteLine(file.Substring(file.LastIndexOf('\\') + 1));
                 if (file.Substring(file.LastIndexOf('\\') + 1) != "dewrito_prefs.cfg")
                 {
                     string profileName = file.Substring(file.LastIndexOf('\\') + 15, file.Substring(file.LastIndexOf('\\') + 15).Length - 4);
 
                     Profiles.Add(profileName, file);
-                    Console.WriteLine($"{Profiles[profileName]}");
                 }
             }
+
+            foreach (var entry in Profiles)
+                Console.WriteLine("[{0} {1}]", entry.Key, entry.Value);
         }
 
         private void WritePreferenceValue(string file, string prefKeyWithoutSpace, string newPrefVal)
