@@ -21,6 +21,7 @@ namespace ElDewrito_Multi_Instance
         public frmMain()
         {
             InitializeComponent();
+            FixSettingsGroupBoxes();
 
             Icon = Properties.Resources.logo;
             executableDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
@@ -48,6 +49,19 @@ namespace ElDewrito_Multi_Instance
         private void tabProfiles_Resize(object sender, EventArgs e)
         {
             clbProfiles.Bounds = new Rectangle(clbProfiles.Location, new Size(clbProfiles.Bounds.Width, tabProfiles.Bounds.Height));
+        }
+
+        private void tctMain_SizeChanged(object sender, EventArgs e)
+        {
+            FixSettingsGroupBoxes();
+        }
+
+        private void FixSettingsGroupBoxes()
+        {
+            foreach (Control groupBox in tabSettings.Controls)
+            {
+                groupBox.Width = tabSettings.Width / 3 - 2;
+            }
         }
     }
 }

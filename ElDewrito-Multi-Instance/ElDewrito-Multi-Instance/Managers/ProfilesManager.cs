@@ -43,6 +43,7 @@ namespace ElDewrito_Multi_Instance
                 //TODO figure out why configFiles is empty and then after it's not do: Environment.Exit(0);
             }
 
+            WritePreferenceValue(configFiles[configFiles.IndexOf("dewrito_prefs.cfg")], "Player.Name", "Blake");
             string playerName = ReadPreferenceValue(configFiles[configFiles.IndexOf("dewrito_prefs.cfg")], "Player.Name");
 
             //check if _username_in_file.cfg is in the list of files
@@ -69,15 +70,15 @@ namespace ElDewrito_Multi_Instance
         private void WritePreferenceValue(string file, string prefKeyWithoutSpace, string newPrefVal)
         {
             int lineNumToEdit = 2; // Warning: 1-based indexing!
-            string sourceFile = "source.txt";
-            string destinationFile = "target.txt";
+            string destinationFile = file;
+            //TODO rename file to tmpFileName
 
             // Read the old file.
             string[] lines = File.ReadAllLines(file);
 
             // Read the appropriate line from the file.
             string lineToWrite = null;
-            using (StreamReader reader = new StreamReader(sourceFile))
+            using (StreamReader reader = new StreamReader(file))
             {
                 for (int currentLineNum = 1; currentLineNum <= lines.Length; ++currentLineNum)
                 {
@@ -91,7 +92,7 @@ namespace ElDewrito_Multi_Instance
             }
 
             if (lineToWrite == null)
-                throw new InvalidDataException("Line does not exist in " + sourceFile);
+                throw new InvalidDataException("Line does not exist in " + file);
 
 
             // Write the new file over the old file.

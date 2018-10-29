@@ -36,9 +36,13 @@
             this.lblProfiles = new System.Windows.Forms.Label();
             this.clbProfiles = new System.Windows.Forms.CheckedListBox();
             this.tabSettings = new System.Windows.Forms.TabPage();
+            this.gbxProfileSpecific = new System.Windows.Forms.GroupBox();
+            this.gbxLaunchOrder = new System.Windows.Forms.GroupBox();
+            this.gbxUniversal = new System.Windows.Forms.GroupBox();
             this.tabLaunch = new System.Windows.Forms.TabPage();
             this.tctMain.SuspendLayout();
             this.tabProfiles.SuspendLayout();
+            this.tabSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // tctMain
@@ -54,6 +58,7 @@
             this.tctMain.SelectedIndex = 0;
             this.tctMain.Size = new System.Drawing.Size(425, 295);
             this.tctMain.TabIndex = 0;
+            this.tctMain.SizeChanged += new System.EventHandler(this.tctMain_SizeChanged);
             // 
             // tabProfiles
             // 
@@ -113,7 +118,7 @@
             this.lblProfiles.Size = new System.Drawing.Size(272, 85);
             this.lblProfiles.TabIndex = 1;
             this.lblProfiles.Text = "Profiles are stored in your Halo Online installation directory as dewrito_prefs_\'" +
-    "profilen ame\'.cfg.\r\n\r\nTo use a profile, make sure it\'s checked!\r\n\r\nYou can have " +
+    "profile name\'.cfg.\r\n\r\nTo use a profile, make sure it\'s checked!\r\n\r\nYou can have " +
     "up to eight profiles in use at once.";
             // 
             // clbProfiles
@@ -127,6 +132,9 @@
             // 
             // tabSettings
             // 
+            this.tabSettings.Controls.Add(this.gbxProfileSpecific);
+            this.tabSettings.Controls.Add(this.gbxLaunchOrder);
+            this.tabSettings.Controls.Add(this.gbxUniversal);
             this.tabSettings.Location = new System.Drawing.Point(4, 22);
             this.tabSettings.Name = "tabSettings";
             this.tabSettings.Padding = new System.Windows.Forms.Padding(3);
@@ -134,6 +142,36 @@
             this.tabSettings.TabIndex = 1;
             this.tabSettings.Text = "Settings";
             this.tabSettings.UseVisualStyleBackColor = true;
+            // 
+            // gbxProfileSpecific
+            // 
+            this.gbxProfileSpecific.Dock = System.Windows.Forms.DockStyle.Left;
+            this.gbxProfileSpecific.Location = new System.Drawing.Point(219, 3);
+            this.gbxProfileSpecific.Name = "gbxProfileSpecific";
+            this.gbxProfileSpecific.Size = new System.Drawing.Size(108, 263);
+            this.gbxProfileSpecific.TabIndex = 3;
+            this.gbxProfileSpecific.TabStop = false;
+            this.gbxProfileSpecific.Text = "Profile Specific";
+            // 
+            // gbxLaunchOrder
+            // 
+            this.gbxLaunchOrder.Dock = System.Windows.Forms.DockStyle.Left;
+            this.gbxLaunchOrder.Location = new System.Drawing.Point(111, 3);
+            this.gbxLaunchOrder.Name = "gbxLaunchOrder";
+            this.gbxLaunchOrder.Size = new System.Drawing.Size(108, 263);
+            this.gbxLaunchOrder.TabIndex = 2;
+            this.gbxLaunchOrder.TabStop = false;
+            this.gbxLaunchOrder.Text = "Launch Order";
+            // 
+            // gbxUniversal
+            // 
+            this.gbxUniversal.Dock = System.Windows.Forms.DockStyle.Left;
+            this.gbxUniversal.Location = new System.Drawing.Point(3, 3);
+            this.gbxUniversal.Name = "gbxUniversal";
+            this.gbxUniversal.Size = new System.Drawing.Size(108, 263);
+            this.gbxUniversal.TabIndex = 0;
+            this.gbxUniversal.TabStop = false;
+            this.gbxUniversal.Text = "Universal";
             // 
             // tabLaunch
             // 
@@ -151,10 +189,12 @@
             this.ClientSize = new System.Drawing.Size(424, 294);
             this.Controls.Add(this.tctMain);
             this.DoubleBuffered = true;
+            this.MinimumSize = new System.Drawing.Size(440, 333);
             this.Name = "frmMain";
             this.Text = "ElDewrito Multi Instance";
             this.tctMain.ResumeLayout(false);
             this.tabProfiles.ResumeLayout(false);
+            this.tabSettings.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -170,6 +210,9 @@
         private System.Windows.Forms.Button btnReloadProfiles;
         private System.Windows.Forms.Button btnAddProfile;
         private System.Windows.Forms.Button btnRemoveProfile;
+        private System.Windows.Forms.GroupBox gbxUniversal;
+        private System.Windows.Forms.GroupBox gbxProfileSpecific;
+        private System.Windows.Forms.GroupBox gbxLaunchOrder;
     }
 }
 

@@ -1,7 +1,24 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ElDewrito_Multi_Instance.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WindowedMode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Disabled</Value>
+    </Setting>
+    <Setting Name="ScreenResolution" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1920X1080</Value>
+    </Setting>
+    <Setting Name="GraphicsQuality" Type="System.String" Scope="User">
+      <Value Profile="(Default)">high</Value>
+    </Setting>
+    <Setting Name="AntiAliasing" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="IntelBloomPatch" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="VSync" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

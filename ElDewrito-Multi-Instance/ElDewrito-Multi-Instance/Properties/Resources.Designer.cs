@@ -61,6 +61,16 @@ namespace ElDewrito_Multi_Instance.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] default_dewrito_prefs {
+            get {
+                object obj = ResourceManager.GetObject("default_dewrito_prefs", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon logo {
