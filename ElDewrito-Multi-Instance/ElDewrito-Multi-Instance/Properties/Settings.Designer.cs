@@ -25,7 +25,7 @@ namespace ElDewrito_Multi_Instance.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Disabled")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public string WindowedMode {
             get {
                 return ((string)(this["WindowedMode"]));
@@ -61,7 +61,7 @@ namespace ElDewrito_Multi_Instance.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public string AntiAliasing {
             get {
                 return ((string)(this["AntiAliasing"]));
@@ -74,18 +74,6 @@ namespace ElDewrito_Multi_Instance.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public string IntelBloomPatch {
-            get {
-                return ((string)(this["IntelBloomPatch"]));
-            }
-            set {
-                this["IntelBloomPatch"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public string VSync {
             get {
                 return ((string)(this["VSync"]));

@@ -12,6 +12,18 @@ namespace ElDewrito_Multi_Instance
     {
         string executableDirectoryPath;
 
+        string windowedMode;
+        string screenResolution;
+        string graphicsQuality;
+        string antiAliasing;
+        string vSync;
+
+        public string WindowedMode { get => windowedMode; set => windowedMode = value; }
+        public string ScreenResolution { get => screenResolution; set => screenResolution = value; }
+        public string GraphicsQuality { get => graphicsQuality; set => graphicsQuality = value; }
+        public string AntiAliasing { get => antiAliasing; set => antiAliasing = value; }
+        public string VSync { get => vSync; set => vSync = value; }
+
         public SettingsManager(string executableDirectoryPath)
         {
             this.executableDirectoryPath = executableDirectoryPath;
@@ -21,7 +33,11 @@ namespace ElDewrito_Multi_Instance
 
         public void InitializeSettings()
         {
-            //TODO set settings fields to Properties.Settings.____
+            WindowedMode = Properties.Settings.Default.WindowedMode;
+            ScreenResolution = Properties.Settings.Default.ScreenResolution;
+            GraphicsQuality = Properties.Settings.Default.GraphicsQuality;
+            AntiAliasing = Properties.Settings.Default.AntiAliasing;
+            VSync = Properties.Settings.Default.VSync;
         }
 
         public void WritePreferenceValue(string file, string prefKeyWithoutSpace, string newPrefVal)

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="WindowedMode" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Disabled</Value>
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="ScreenResolution" Type="System.String" Scope="User">
       <Value Profile="(Default)">1920X1080</Value>
@@ -12,13 +12,10 @@
       <Value Profile="(Default)">high</Value>
     </Setting>
     <Setting Name="AntiAliasing" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1</Value>
-    </Setting>
-    <Setting Name="IntelBloomPatch" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="VSync" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

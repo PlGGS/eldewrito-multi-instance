@@ -39,10 +39,21 @@
             this.gbxProfileSpecific = new System.Windows.Forms.GroupBox();
             this.gbxLaunchOrder = new System.Windows.Forms.GroupBox();
             this.gbxUniversal = new System.Windows.Forms.GroupBox();
+            this.chkVSync = new System.Windows.Forms.CheckBox();
+            this.chkAntiAliasing = new System.Windows.Forms.CheckBox();
+            this.chkWindowedMode = new System.Windows.Forms.CheckBox();
+            this.lblVSync = new System.Windows.Forms.Label();
+            this.lblAntiAliasing = new System.Windows.Forms.Label();
+            this.lblGraphicsQuality = new System.Windows.Forms.Label();
+            this.lblResolution = new System.Windows.Forms.Label();
+            this.lblWindowedMode = new System.Windows.Forms.Label();
             this.tabLaunch = new System.Windows.Forms.TabPage();
+            this.cbxResolution = new System.Windows.Forms.ComboBox();
+            this.cbxGraphicsQuality = new System.Windows.Forms.ComboBox();
             this.tctMain.SuspendLayout();
             this.tabProfiles.SuspendLayout();
             this.tabSettings.SuspendLayout();
+            this.gbxUniversal.SuspendLayout();
             this.SuspendLayout();
             // 
             // tctMain
@@ -165,6 +176,16 @@
             // 
             // gbxUniversal
             // 
+            this.gbxUniversal.Controls.Add(this.cbxGraphicsQuality);
+            this.gbxUniversal.Controls.Add(this.cbxResolution);
+            this.gbxUniversal.Controls.Add(this.chkVSync);
+            this.gbxUniversal.Controls.Add(this.chkAntiAliasing);
+            this.gbxUniversal.Controls.Add(this.chkWindowedMode);
+            this.gbxUniversal.Controls.Add(this.lblVSync);
+            this.gbxUniversal.Controls.Add(this.lblAntiAliasing);
+            this.gbxUniversal.Controls.Add(this.lblGraphicsQuality);
+            this.gbxUniversal.Controls.Add(this.lblResolution);
+            this.gbxUniversal.Controls.Add(this.lblWindowedMode);
             this.gbxUniversal.Dock = System.Windows.Forms.DockStyle.Left;
             this.gbxUniversal.Location = new System.Drawing.Point(3, 3);
             this.gbxUniversal.Name = "gbxUniversal";
@@ -172,6 +193,78 @@
             this.gbxUniversal.TabIndex = 0;
             this.gbxUniversal.TabStop = false;
             this.gbxUniversal.Text = "Universal";
+            // 
+            // chkVSync
+            // 
+            this.chkVSync.AutoSize = true;
+            this.chkVSync.Location = new System.Drawing.Point(116, 108);
+            this.chkVSync.Name = "chkVSync";
+            this.chkVSync.Size = new System.Drawing.Size(15, 14);
+            this.chkVSync.TabIndex = 9;
+            this.chkVSync.UseVisualStyleBackColor = true;
+            // 
+            // chkAntiAliasing
+            // 
+            this.chkAntiAliasing.AutoSize = true;
+            this.chkAntiAliasing.Location = new System.Drawing.Point(116, 86);
+            this.chkAntiAliasing.Name = "chkAntiAliasing";
+            this.chkAntiAliasing.Size = new System.Drawing.Size(15, 14);
+            this.chkAntiAliasing.TabIndex = 8;
+            this.chkAntiAliasing.UseVisualStyleBackColor = true;
+            // 
+            // chkWindowedMode
+            // 
+            this.chkWindowedMode.AutoSize = true;
+            this.chkWindowedMode.Location = new System.Drawing.Point(116, 20);
+            this.chkWindowedMode.Name = "chkWindowedMode";
+            this.chkWindowedMode.Size = new System.Drawing.Size(15, 14);
+            this.chkWindowedMode.TabIndex = 5;
+            this.chkWindowedMode.UseVisualStyleBackColor = true;
+            // 
+            // lblVSync
+            // 
+            this.lblVSync.AutoSize = true;
+            this.lblVSync.Location = new System.Drawing.Point(6, 108);
+            this.lblVSync.Name = "lblVSync";
+            this.lblVSync.Size = new System.Drawing.Size(38, 13);
+            this.lblVSync.TabIndex = 4;
+            this.lblVSync.Text = "VSync";
+            // 
+            // lblAntiAliasing
+            // 
+            this.lblAntiAliasing.AutoSize = true;
+            this.lblAntiAliasing.Location = new System.Drawing.Point(6, 86);
+            this.lblAntiAliasing.Name = "lblAntiAliasing";
+            this.lblAntiAliasing.Size = new System.Drawing.Size(64, 13);
+            this.lblAntiAliasing.TabIndex = 3;
+            this.lblAntiAliasing.Text = "Anti Aliasing";
+            // 
+            // lblGraphicsQuality
+            // 
+            this.lblGraphicsQuality.AutoSize = true;
+            this.lblGraphicsQuality.Location = new System.Drawing.Point(6, 64);
+            this.lblGraphicsQuality.Name = "lblGraphicsQuality";
+            this.lblGraphicsQuality.Size = new System.Drawing.Size(39, 13);
+            this.lblGraphicsQuality.TabIndex = 2;
+            this.lblGraphicsQuality.Text = "Quality";
+            // 
+            // lblResolution
+            // 
+            this.lblResolution.AutoSize = true;
+            this.lblResolution.Location = new System.Drawing.Point(6, 42);
+            this.lblResolution.Name = "lblResolution";
+            this.lblResolution.Size = new System.Drawing.Size(57, 13);
+            this.lblResolution.TabIndex = 1;
+            this.lblResolution.Text = "Resolution";
+            // 
+            // lblWindowedMode
+            // 
+            this.lblWindowedMode.AutoSize = true;
+            this.lblWindowedMode.Location = new System.Drawing.Point(6, 20);
+            this.lblWindowedMode.Name = "lblWindowedMode";
+            this.lblWindowedMode.Size = new System.Drawing.Size(88, 13);
+            this.lblWindowedMode.TabIndex = 0;
+            this.lblWindowedMode.Text = "Windowed Mode";
             // 
             // tabLaunch
             // 
@@ -181,6 +274,22 @@
             this.tabLaunch.TabIndex = 2;
             this.tabLaunch.Text = "Launch";
             this.tabLaunch.UseVisualStyleBackColor = true;
+            // 
+            // cbxResolution
+            // 
+            this.cbxResolution.FormattingEnabled = true;
+            this.cbxResolution.Location = new System.Drawing.Point(70, 37);
+            this.cbxResolution.Name = "cbxResolution";
+            this.cbxResolution.Size = new System.Drawing.Size(61, 21);
+            this.cbxResolution.TabIndex = 10;
+            // 
+            // cbxGraphicsQuality
+            // 
+            this.cbxGraphicsQuality.FormattingEnabled = true;
+            this.cbxGraphicsQuality.Location = new System.Drawing.Point(70, 62);
+            this.cbxGraphicsQuality.Name = "cbxGraphicsQuality";
+            this.cbxGraphicsQuality.Size = new System.Drawing.Size(61, 21);
+            this.cbxGraphicsQuality.TabIndex = 11;
             // 
             // frmMain
             // 
@@ -192,9 +301,12 @@
             this.MinimumSize = new System.Drawing.Size(440, 333);
             this.Name = "frmMain";
             this.Text = "ElDewrito Multi Instance";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.tctMain.ResumeLayout(false);
             this.tabProfiles.ResumeLayout(false);
             this.tabSettings.ResumeLayout(false);
+            this.gbxUniversal.ResumeLayout(false);
+            this.gbxUniversal.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -213,6 +325,16 @@
         private System.Windows.Forms.GroupBox gbxUniversal;
         private System.Windows.Forms.GroupBox gbxProfileSpecific;
         private System.Windows.Forms.GroupBox gbxLaunchOrder;
+        private System.Windows.Forms.Label lblResolution;
+        private System.Windows.Forms.Label lblWindowedMode;
+        private System.Windows.Forms.Label lblGraphicsQuality;
+        private System.Windows.Forms.Label lblAntiAliasing;
+        private System.Windows.Forms.Label lblVSync;
+        private System.Windows.Forms.CheckBox chkVSync;
+        private System.Windows.Forms.CheckBox chkAntiAliasing;
+        private System.Windows.Forms.CheckBox chkWindowedMode;
+        private System.Windows.Forms.ComboBox cbxResolution;
+        private System.Windows.Forms.ComboBox cbxGraphicsQuality;
     }
 }
 

@@ -63,5 +63,14 @@ namespace ElDewrito_Multi_Instance
                 groupBox.Width = tabSettings.Width / 3 - 2;
             }
         }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            chkWindowedMode.Checked = Convert.ToBoolean(Convert.ToInt32(settingsManager.WindowedMode));
+            //TODO fill cbxResolution and set it
+            //TODO fill cbxGraphicsQuality and set it
+            chkAntiAliasing.Checked = Convert.ToBoolean(Convert.ToInt32(settingsManager.AntiAliasing));
+            chkVSync.Checked = Convert.ToBoolean(Convert.ToInt32(settingsManager.VSync));
+        }
     }
 }
