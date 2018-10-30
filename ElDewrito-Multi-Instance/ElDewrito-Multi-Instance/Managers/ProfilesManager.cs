@@ -43,8 +43,8 @@ namespace ElDewrito_Multi_Instance
                 //TODO figure out why configFiles is empty and then after it's not do: Environment.Exit(0);
             }
 
-            WritePreferenceValue(configFiles[configFiles.IndexOf("dewrito_prefs.cfg")], "Player.Name", "Blake");
-            string playerName = ReadPreferenceValue(configFiles[configFiles.IndexOf("dewrito_prefs.cfg")], "Player.Name");
+            settingsManager.WritePreferenceValue(configFiles[configFiles.IndexOf("dewrito_prefs.cfg")], "Player.Name", "Blake");
+            string playerName = settingsManager.ReadPreferenceValue(configFiles[configFiles.IndexOf("dewrito_prefs.cfg")], "Player.Name");
 
             //check if _username_in_file.cfg is in the list of files
             if (!configFiles.Contains($"dewrito_prefs_{playerName.Substring(1, playerName.Length - 2)}.cfg"))
@@ -65,68 +65,6 @@ namespace ElDewrito_Multi_Instance
 
             foreach (var entry in Profiles)
                 Console.WriteLine("[{0} {1}]", entry.Key, entry.Value);
-        }
-
-        private void WritePreferenceValue(string file, string prefKeyWithoutSpace, string newPrefVal)
-        {
-            int lineNumToEdit = 2; // Warning: 1-based indexing!
-            string destinationFile = file;
-            //TODO rename file to tmpFileName
-
-            // Read the old file.
-            string[] lines = File.ReadAllLines(file);
-
-            // Read the appropriate line from the file.
-            string lineToWrite = null;
-            using (StreamReader reader = new StreamReader(file))
-            {
-                for (int currentLineNum = 1; currentLineNum <= lines.Length; ++currentLineNum)
-                {
-                    lineToWrite = reader.ReadLine();
-                    if (lineToWrite.Contains(prefKeyWithoutSpace))
-                    {
-                        lineNumToEdit = currentLineNum;
-                        break;
-                    }
-                }
-            }
-
-            if (lineToWrite == null)
-                throw new InvalidDataException("Line does not exist in " + file);
-
-
-            // Write the new file over the old file.
-            using (StreamWriter writer = new StreamWriter(destinationFile))
-            {
-                for (int currentLineNum = 1; currentLineNum <= lines.Length; ++currentLineNum)
-                {
-                    if (currentLineNum == lineNumToEdit)
-                    {
-                        writer.WriteLine($"{lineToWrite.Substring(0, lineToWrite.IndexOf(' '))} \"{newPrefVal}\"");
-                    }
-                    else
-                    {
-                        writer.WriteLine(lines[currentLineNum - 1]);
-                    }
-                }
-            }
-        }
-
-        private string ReadPreferenceValue(string file, string prefKeyWithoutSpace)
-        {
-            using (StreamReader reader = new StreamReader(file))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    if (line.Contains(prefKeyWithoutSpace))
-                    {
-                        return line.Substring(prefKeyWithoutSpace.Length + 1);
-                    }
-                }
-            }
-
-            return null;
         }
 
         private void InitializeClbProfiles()

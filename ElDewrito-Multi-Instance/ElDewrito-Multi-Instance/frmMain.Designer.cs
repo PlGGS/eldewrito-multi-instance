@@ -146,9 +146,9 @@
             // gbxProfileSpecific
             // 
             this.gbxProfileSpecific.Dock = System.Windows.Forms.DockStyle.Left;
-            this.gbxProfileSpecific.Location = new System.Drawing.Point(219, 3);
+            this.gbxProfileSpecific.Location = new System.Drawing.Point(277, 3);
             this.gbxProfileSpecific.Name = "gbxProfileSpecific";
-            this.gbxProfileSpecific.Size = new System.Drawing.Size(108, 263);
+            this.gbxProfileSpecific.Size = new System.Drawing.Size(137, 263);
             this.gbxProfileSpecific.TabIndex = 3;
             this.gbxProfileSpecific.TabStop = false;
             this.gbxProfileSpecific.Text = "Profile Specific";
@@ -156,9 +156,9 @@
             // gbxLaunchOrder
             // 
             this.gbxLaunchOrder.Dock = System.Windows.Forms.DockStyle.Left;
-            this.gbxLaunchOrder.Location = new System.Drawing.Point(111, 3);
+            this.gbxLaunchOrder.Location = new System.Drawing.Point(140, 3);
             this.gbxLaunchOrder.Name = "gbxLaunchOrder";
-            this.gbxLaunchOrder.Size = new System.Drawing.Size(108, 263);
+            this.gbxLaunchOrder.Size = new System.Drawing.Size(137, 263);
             this.gbxLaunchOrder.TabIndex = 2;
             this.gbxLaunchOrder.TabStop = false;
             this.gbxLaunchOrder.Text = "Launch Order";
@@ -168,7 +168,7 @@
             this.gbxUniversal.Dock = System.Windows.Forms.DockStyle.Left;
             this.gbxUniversal.Location = new System.Drawing.Point(3, 3);
             this.gbxUniversal.Name = "gbxUniversal";
-            this.gbxUniversal.Size = new System.Drawing.Size(108, 263);
+            this.gbxUniversal.Size = new System.Drawing.Size(137, 263);
             this.gbxUniversal.TabIndex = 0;
             this.gbxUniversal.TabStop = false;
             this.gbxUniversal.Text = "Universal";
