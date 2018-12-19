@@ -33,29 +33,8 @@ namespace ElDewrito_Multi_Instance
             return Process.GetProcesses().Any(p => p.ProcessName.Contains(nameSubstring));
         }
 
-        /// <summary>
-        /// Creates a new shortcut of a selected program. In this case we use it to create Halo Online shortcuts that don't need to be run by the default launcher.
-        /// </summary>
-        /// <param name="shortcutName"></param>
-        /// <param name="shortcutPath"></param>
-        /// <param name="shortcutTargetFileLocation"></param>
-        /// <param name="shortcutArguments"></param>
-        /// <param name="shortcutStartInDirectory"></param>
-        /// <param name="shortcutIconLocation"></param>
-        /// <param name="shortcutDescription"></param>
-        public static void CreateShortcut(string shortcutName, string shortcutPath, string shortcutTargetFileLocation, string shortcutArguments, string shortcutStartInDirectory, string shortcutIconLocation, string shortcutDescription)
+        public void Launch(sbyte numberOfInstances)
         {
-
-            string shortcutLocation = System.IO.Path.Combine(shortcutPath, shortcutName + ".lnk");
-            WshShell shell = new WshShell();
-            IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutLocation);
-
-            shortcut.Description = shortcutDescription;
-            shortcut.IconLocation = shortcutIconLocation;
-            shortcut.TargetPath = shortcutTargetFileLocation;
-            shortcut.Arguments = shortcutArguments;
-            shortcut.WorkingDirectory = shortcutStartInDirectory;
-            shortcut.Save();
 
         }
     }

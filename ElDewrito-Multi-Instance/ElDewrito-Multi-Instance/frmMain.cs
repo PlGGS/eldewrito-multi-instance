@@ -13,6 +13,7 @@ namespace ElDewrito_Multi_Instance
 {
     public partial class frmMain : Form
     {
+        bool running = false;
         string executableDirectoryPath;
         ProfilesManager profilesManager;
         SettingsManager settingsManager;
@@ -21,7 +22,6 @@ namespace ElDewrito_Multi_Instance
         public frmMain()
         {
             InitializeComponent();
-            FixSettingsGroupBoxes();
 
             Icon = Properties.Resources.logo;
             executableDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
@@ -45,32 +45,46 @@ namespace ElDewrito_Multi_Instance
         {
             profilesManager.RemoveProfile();
         }
-
-        private void tabProfiles_Resize(object sender, EventArgs e)
-        {
-            clbProfiles.Bounds = new Rectangle(clbProfiles.Location, new Size(clbProfiles.Bounds.Width, tabProfiles.Bounds.Height));
-        }
-
-        private void tctMain_SizeChanged(object sender, EventArgs e)
-        {
-            FixSettingsGroupBoxes();
-        }
-
-        private void FixSettingsGroupBoxes()
-        {
-            foreach (Control groupBox in tabSettings.Controls)
-            {
-                groupBox.Width = tabSettings.Width / 3 - 2;
-            }
-        }
-
+        
         private void frmMain_Load(object sender, EventArgs e)
         {
-            chkWindowedMode.Checked = Convert.ToBoolean(Convert.ToInt32(settingsManager.WindowedMode));
+            chkFullscreen.Checked = Convert.ToBoolean(Convert.ToInt32(settingsManager.Fullscreen));
             //TODO fill cbxResolution and set it
             //TODO fill cbxGraphicsQuality and set it
             chkAntiAliasing.Checked = Convert.ToBoolean(Convert.ToInt32(settingsManager.AntiAliasing));
             chkVSync.Checked = Convert.ToBoolean(Convert.ToInt32(settingsManager.VSync));
+
+            cbxNumberOfInstances.SelectedValue = 0;
+        }
+
+        private void clbProfiles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmMain_Resize(object sender, EventArgs e)
+        {
+            clbProfiles.Bounds = new Rectangle(clbProfiles.Location, new Size(clbProfiles.Width, btnReloadProfiles.Top - 22));
+            lsvLaunchOrder.Bounds = new Rectangle(clbProfiles.Location, new Size(clbProfiles.Width, btnMoveInstanceUp.Top - 22));
+            btnLaunch.Bounds = new Rectangle(btnLaunch.Location, new Size(btnLaunch.Width, gbxProfileSpecificSettings.Location.Y - btnLaunch.Top - 6));
+        }
+
+        private void btnLaunch_Click(object sender, EventArgs e)
+        {
+            if (running == false)
+            {
+                running = true;
+                btnLaunch.Text = "Close instances";
+
+                processManager.Launch(settingsManager.NumberOfInstances);
+            }
+            else
+            {
+                running = false;
+                btnLaunch.Text = "Launch";
+
+
+            }
         }
     }
 }

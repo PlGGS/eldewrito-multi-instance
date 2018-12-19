@@ -26,12 +26,12 @@ namespace ElDewrito_Multi_Instance.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public string WindowedMode {
+        public string Fullscreen {
             get {
-                return ((string)(this["WindowedMode"]));
+                return ((string)(this["Fullscreen"]));
             }
             set {
-                this["WindowedMode"] = value;
+                this["Fullscreen"] = value;
             }
         }
         
@@ -80,6 +80,18 @@ namespace ElDewrito_Multi_Instance.Properties {
             }
             set {
                 this["VSync"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public sbyte NumberOfInstances {
+            get {
+                return ((sbyte)(this["NumberOfInstances"]));
+            }
+            set {
+                this["NumberOfInstances"] = value;
             }
         }
     }
