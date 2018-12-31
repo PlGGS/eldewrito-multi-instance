@@ -78,6 +78,8 @@ namespace ElDewrito_Multi_Instance
             {
                 running = false;
                 btnLaunch.Text = "Launch";
+
+                processManager.CloseInstances();
             }
         }
 
@@ -156,7 +158,7 @@ namespace ElDewrito_Multi_Instance
                     lsbLaunchOrder.Items.Add(profileNames[i]);
                     w.WriteLine(profileNames[i]);
 
-                    if (Convert.ToBoolean(Convert.ToInt32(settingManager.KeyboardControlsP1)) == true && i != 0)
+                    if (Convert.ToBoolean(Convert.ToInt32(settingManager.KeyboardControlsP1)) == true && i == 0)
                     {
                         profileManager.WriteProfileSetting(profileNames[i], "Settings.Gamepad", "0");
                     }

@@ -41,9 +41,14 @@ namespace ElDewrito_Multi_Instance
             {
                 for (int i = 0; i < System.IO.File.ReadLines(Configuration).Count(); i++)
                 {
-                    Process.Start($"{executableDirectoryPath}\\eldorado.exe", $"-instance {r.ReadLine()}");
+                    Process.Start($"{executableDirectoryPath}\\eldorado.exe", $"-instance {r.ReadLine()} -windowed {!Convert.ToBoolean(Convert.ToInt16(settingManager.Fullscreen))}");
                 }
             }
+        }
+
+        public void CloseInstances()
+        {
+            //TODO save instances to temporary list for closing here
         }
     }
 }
