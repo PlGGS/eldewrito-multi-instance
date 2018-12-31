@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAddProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddProfile.Designer.cs">
+      <DependentUpon>frmAddProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Managers\ProcessManager.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -56,10 +62,13 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Managers\ProfilesManager.cs" />
-    <Compile Include="Managers\SettingsManager.cs" />
+    <Compile Include="Managers\ProfileManager.cs" />
+    <Compile Include="Managers\SettingManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAddProfile.resx">
+      <DependentUpon>frmAddProfile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>

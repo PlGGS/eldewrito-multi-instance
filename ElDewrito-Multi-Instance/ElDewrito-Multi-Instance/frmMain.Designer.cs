@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.gbxUniversalSettings = new System.Windows.Forms.GroupBox();
+            this.chkKeyboardControlsP1 = new System.Windows.Forms.CheckBox();
+            this.lblKeyboardControlsP1 = new System.Windows.Forms.Label();
+            this.cbxNumberOfInstances = new System.Windows.Forms.ComboBox();
+            this.chkAntiAliasing = new System.Windows.Forms.CheckBox();
+            this.lblAntiAliasing = new System.Windows.Forms.Label();
             this.chkConsoleMode = new System.Windows.Forms.CheckBox();
             this.lblConsoleMode = new System.Windows.Forms.Label();
             this.chkVSync = new System.Windows.Forms.CheckBox();
@@ -37,14 +42,14 @@
             this.lblNumberOfInstances = new System.Windows.Forms.Label();
             this.lblFullscreen = new System.Windows.Forms.Label();
             this.gbxProfileSpecificSettings = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtHResolution = new System.Windows.Forms.TextBox();
             this.lblHResolution = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtVResolution = new System.Windows.Forms.TextBox();
             this.cbxGraphicsQuality = new System.Windows.Forms.ComboBox();
             this.lblGraphicsQuality = new System.Windows.Forms.Label();
             this.lblVResolution = new System.Windows.Forms.Label();
             this.gbxLaunchOrder = new System.Windows.Forms.GroupBox();
-            this.lsvLaunchOrder = new System.Windows.Forms.ListView();
+            this.lsbLaunchOrder = new System.Windows.Forms.ListBox();
             this.btnMoveInstanceUp = new System.Windows.Forms.Button();
             this.btnMoveInstanceDown = new System.Windows.Forms.Button();
             this.gbxProfiles = new System.Windows.Forms.GroupBox();
@@ -53,11 +58,6 @@
             this.btnAddProfile = new System.Windows.Forms.Button();
             this.btnRemoveProfile = new System.Windows.Forms.Button();
             this.btnLaunch = new System.Windows.Forms.Button();
-            this.chkAntiAliasing = new System.Windows.Forms.CheckBox();
-            this.lblAntiAliasing = new System.Windows.Forms.Label();
-            this.cbxNumberOfInstances = new System.Windows.Forms.ComboBox();
-            this.chkKeyboardControlsP1 = new System.Windows.Forms.CheckBox();
-            this.lblKeyboardControlsP1 = new System.Windows.Forms.Label();
             this.gbxUniversalSettings.SuspendLayout();
             this.gbxProfileSpecificSettings.SuspendLayout();
             this.gbxLaunchOrder.SuspendLayout();
@@ -86,6 +86,62 @@
             this.gbxUniversalSettings.TabStop = false;
             this.gbxUniversalSettings.Text = "Universal Settings";
             // 
+            // chkKeyboardControlsP1
+            // 
+            this.chkKeyboardControlsP1.AutoSize = true;
+            this.chkKeyboardControlsP1.Location = new System.Drawing.Point(116, 134);
+            this.chkKeyboardControlsP1.Name = "chkKeyboardControlsP1";
+            this.chkKeyboardControlsP1.Size = new System.Drawing.Size(15, 14);
+            this.chkKeyboardControlsP1.TabIndex = 16;
+            this.chkKeyboardControlsP1.UseVisualStyleBackColor = true;
+            this.chkKeyboardControlsP1.CheckedChanged += new System.EventHandler(this.chkKeyboardControlsP1_CheckedChanged);
+            // 
+            // lblKeyboardControlsP1
+            // 
+            this.lblKeyboardControlsP1.AutoSize = true;
+            this.lblKeyboardControlsP1.Location = new System.Drawing.Point(6, 134);
+            this.lblKeyboardControlsP1.Name = "lblKeyboardControlsP1";
+            this.lblKeyboardControlsP1.Size = new System.Drawing.Size(95, 13);
+            this.lblKeyboardControlsP1.TabIndex = 15;
+            this.lblKeyboardControlsP1.Text = "Kb / m controls P1";
+            // 
+            // cbxNumberOfInstances
+            // 
+            this.cbxNumberOfInstances.FormattingEnabled = true;
+            this.cbxNumberOfInstances.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"});
+            this.cbxNumberOfInstances.Location = new System.Drawing.Point(88, 20);
+            this.cbxNumberOfInstances.Name = "cbxNumberOfInstances";
+            this.cbxNumberOfInstances.Size = new System.Drawing.Size(43, 21);
+            this.cbxNumberOfInstances.TabIndex = 14;
+            this.cbxNumberOfInstances.SelectedIndexChanged += new System.EventHandler(this.cbxNumberOfInstances_SelectedIndexChanged);
+            // 
+            // chkAntiAliasing
+            // 
+            this.chkAntiAliasing.AutoSize = true;
+            this.chkAntiAliasing.Location = new System.Drawing.Point(116, 112);
+            this.chkAntiAliasing.Name = "chkAntiAliasing";
+            this.chkAntiAliasing.Size = new System.Drawing.Size(15, 14);
+            this.chkAntiAliasing.TabIndex = 13;
+            this.chkAntiAliasing.UseVisualStyleBackColor = true;
+            this.chkAntiAliasing.CheckedChanged += new System.EventHandler(this.chkAntiAliasing_CheckedChanged);
+            // 
+            // lblAntiAliasing
+            // 
+            this.lblAntiAliasing.AutoSize = true;
+            this.lblAntiAliasing.Location = new System.Drawing.Point(6, 112);
+            this.lblAntiAliasing.Name = "lblAntiAliasing";
+            this.lblAntiAliasing.Size = new System.Drawing.Size(63, 13);
+            this.lblAntiAliasing.TabIndex = 12;
+            this.lblAntiAliasing.Text = "Anti aliasing";
+            // 
             // chkConsoleMode
             // 
             this.chkConsoleMode.AutoSize = true;
@@ -94,6 +150,7 @@
             this.chkConsoleMode.Size = new System.Drawing.Size(15, 14);
             this.chkConsoleMode.TabIndex = 11;
             this.chkConsoleMode.UseVisualStyleBackColor = true;
+            this.chkConsoleMode.CheckedChanged += new System.EventHandler(this.chkConsoleMode_CheckedChanged);
             // 
             // lblConsoleMode
             // 
@@ -112,6 +169,7 @@
             this.chkVSync.Size = new System.Drawing.Size(15, 14);
             this.chkVSync.TabIndex = 9;
             this.chkVSync.UseVisualStyleBackColor = true;
+            this.chkVSync.CheckedChanged += new System.EventHandler(this.chkVSync_CheckedChanged);
             // 
             // chkFullscreen
             // 
@@ -121,6 +179,7 @@
             this.chkFullscreen.Size = new System.Drawing.Size(15, 14);
             this.chkFullscreen.TabIndex = 5;
             this.chkFullscreen.UseVisualStyleBackColor = true;
+            this.chkFullscreen.CheckedChanged += new System.EventHandler(this.chkFullscreen_CheckedChanged);
             // 
             // lblVSync
             // 
@@ -151,9 +210,9 @@
             // 
             // gbxProfileSpecificSettings
             // 
-            this.gbxProfileSpecificSettings.Controls.Add(this.textBox2);
+            this.gbxProfileSpecificSettings.Controls.Add(this.txtHResolution);
             this.gbxProfileSpecificSettings.Controls.Add(this.lblHResolution);
-            this.gbxProfileSpecificSettings.Controls.Add(this.textBox1);
+            this.gbxProfileSpecificSettings.Controls.Add(this.txtVResolution);
             this.gbxProfileSpecificSettings.Controls.Add(this.cbxGraphicsQuality);
             this.gbxProfileSpecificSettings.Controls.Add(this.lblGraphicsQuality);
             this.gbxProfileSpecificSettings.Controls.Add(this.lblVResolution);
@@ -165,12 +224,12 @@
             this.gbxProfileSpecificSettings.TabStop = false;
             this.gbxProfileSpecificSettings.Text = "Profile Specific Settings";
             // 
-            // textBox2
+            // txtHResolution
             // 
-            this.textBox2.Location = new System.Drawing.Point(80, 17);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(51, 20);
-            this.textBox2.TabIndex = 17;
+            this.txtHResolution.Location = new System.Drawing.Point(80, 17);
+            this.txtHResolution.Name = "txtHResolution";
+            this.txtHResolution.Size = new System.Drawing.Size(51, 20);
+            this.txtHResolution.TabIndex = 17;
             // 
             // lblHResolution
             // 
@@ -181,12 +240,12 @@
             this.lblHResolution.TabIndex = 16;
             this.lblHResolution.Text = "H Resolution";
             // 
-            // textBox1
+            // txtVResolution
             // 
-            this.textBox1.Location = new System.Drawing.Point(80, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(51, 20);
-            this.textBox1.TabIndex = 15;
+            this.txtVResolution.Location = new System.Drawing.Point(80, 42);
+            this.txtVResolution.Name = "txtVResolution";
+            this.txtVResolution.Size = new System.Drawing.Size(51, 20);
+            this.txtVResolution.TabIndex = 15;
             // 
             // cbxGraphicsQuality
             // 
@@ -220,7 +279,7 @@
             // 
             // gbxLaunchOrder
             // 
-            this.gbxLaunchOrder.Controls.Add(this.lsvLaunchOrder);
+            this.gbxLaunchOrder.Controls.Add(this.lsbLaunchOrder);
             this.gbxLaunchOrder.Controls.Add(this.btnMoveInstanceUp);
             this.gbxLaunchOrder.Controls.Add(this.btnMoveInstanceDown);
             this.gbxLaunchOrder.Dock = System.Windows.Forms.DockStyle.Right;
@@ -231,14 +290,14 @@
             this.gbxLaunchOrder.TabStop = false;
             this.gbxLaunchOrder.Text = "Launch Order";
             // 
-            // lsvLaunchOrder
+            // lsbLaunchOrder
             // 
-            this.lsvLaunchOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lsvLaunchOrder.Location = new System.Drawing.Point(3, 23);
-            this.lsvLaunchOrder.Name = "lsvLaunchOrder";
-            this.lsvLaunchOrder.Size = new System.Drawing.Size(135, 222);
-            this.lsvLaunchOrder.TabIndex = 20;
-            this.lsvLaunchOrder.UseCompatibleStateImageBehavior = false;
+            this.lsbLaunchOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lsbLaunchOrder.FormattingEnabled = true;
+            this.lsbLaunchOrder.Location = new System.Drawing.Point(3, 33);
+            this.lsbLaunchOrder.Name = "lsbLaunchOrder";
+            this.lsbLaunchOrder.Size = new System.Drawing.Size(135, 212);
+            this.lsbLaunchOrder.TabIndex = 21;
             // 
             // btnMoveInstanceUp
             // 
@@ -282,6 +341,8 @@
             this.clbProfiles.Name = "clbProfiles";
             this.clbProfiles.Size = new System.Drawing.Size(135, 199);
             this.clbProfiles.TabIndex = 15;
+            this.clbProfiles.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbProfiles_ItemCheck);
+            this.clbProfiles.SelectedIndexChanged += new System.EventHandler(this.clbProfiles_SelectedIndexChanged);
             // 
             // btnReloadProfiles
             // 
@@ -292,6 +353,7 @@
             this.btnReloadProfiles.TabIndex = 14;
             this.btnReloadProfiles.Text = "Reload profiles";
             this.btnReloadProfiles.UseVisualStyleBackColor = true;
+            this.btnReloadProfiles.Click += new System.EventHandler(this.btnReloadProfiles_Click);
             // 
             // btnAddProfile
             // 
@@ -302,6 +364,7 @@
             this.btnAddProfile.TabIndex = 13;
             this.btnAddProfile.Text = "Add profile";
             this.btnAddProfile.UseVisualStyleBackColor = true;
+            this.btnAddProfile.Click += new System.EventHandler(this.btnAddProfile_Click);
             // 
             // btnRemoveProfile
             // 
@@ -312,6 +375,7 @@
             this.btnRemoveProfile.TabIndex = 12;
             this.btnRemoveProfile.Text = "Remove selected profile";
             this.btnRemoveProfile.UseVisualStyleBackColor = true;
+            this.btnRemoveProfile.Click += new System.EventHandler(this.btnRemoveProfile_Click);
             // 
             // btnLaunch
             // 
@@ -322,59 +386,6 @@
             this.btnLaunch.Text = "Launch";
             this.btnLaunch.UseVisualStyleBackColor = true;
             this.btnLaunch.Click += new System.EventHandler(this.btnLaunch_Click);
-            // 
-            // chkAntiAliasing
-            // 
-            this.chkAntiAliasing.AutoSize = true;
-            this.chkAntiAliasing.Location = new System.Drawing.Point(116, 112);
-            this.chkAntiAliasing.Name = "chkAntiAliasing";
-            this.chkAntiAliasing.Size = new System.Drawing.Size(15, 14);
-            this.chkAntiAliasing.TabIndex = 13;
-            this.chkAntiAliasing.UseVisualStyleBackColor = true;
-            // 
-            // lblAntiAliasing
-            // 
-            this.lblAntiAliasing.AutoSize = true;
-            this.lblAntiAliasing.Location = new System.Drawing.Point(6, 112);
-            this.lblAntiAliasing.Name = "lblAntiAliasing";
-            this.lblAntiAliasing.Size = new System.Drawing.Size(63, 13);
-            this.lblAntiAliasing.TabIndex = 12;
-            this.lblAntiAliasing.Text = "Anti aliasing";
-            // 
-            // cbxNumberOfInstances
-            // 
-            this.cbxNumberOfInstances.FormattingEnabled = true;
-            this.cbxNumberOfInstances.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.cbxNumberOfInstances.Location = new System.Drawing.Point(88, 20);
-            this.cbxNumberOfInstances.Name = "cbxNumberOfInstances";
-            this.cbxNumberOfInstances.Size = new System.Drawing.Size(43, 21);
-            this.cbxNumberOfInstances.TabIndex = 14;
-            // 
-            // chkKeyboardControlsP1
-            // 
-            this.chkKeyboardControlsP1.AutoSize = true;
-            this.chkKeyboardControlsP1.Location = new System.Drawing.Point(116, 134);
-            this.chkKeyboardControlsP1.Name = "chkKeyboardControlsP1";
-            this.chkKeyboardControlsP1.Size = new System.Drawing.Size(15, 14);
-            this.chkKeyboardControlsP1.TabIndex = 16;
-            this.chkKeyboardControlsP1.UseVisualStyleBackColor = true;
-            // 
-            // lblKeyboardControlsP1
-            // 
-            this.lblKeyboardControlsP1.AutoSize = true;
-            this.lblKeyboardControlsP1.Location = new System.Drawing.Point(6, 134);
-            this.lblKeyboardControlsP1.Name = "lblKeyboardControlsP1";
-            this.lblKeyboardControlsP1.Size = new System.Drawing.Size(108, 13);
-            this.lblKeyboardControlsP1.TabIndex = 15;
-            this.lblKeyboardControlsP1.Text = "Keyboard controls P1";
             // 
             // frmMain
             // 
@@ -413,9 +424,9 @@
         private System.Windows.Forms.Label lblNumberOfInstances;
         private System.Windows.Forms.Label lblFullscreen;
         private System.Windows.Forms.GroupBox gbxProfileSpecificSettings;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtHResolution;
         private System.Windows.Forms.Label lblHResolution;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtVResolution;
         private System.Windows.Forms.ComboBox cbxGraphicsQuality;
         private System.Windows.Forms.Label lblGraphicsQuality;
         private System.Windows.Forms.Label lblVResolution;
@@ -425,7 +436,6 @@
         private System.Windows.Forms.Button btnReloadProfiles;
         private System.Windows.Forms.Button btnAddProfile;
         private System.Windows.Forms.Button btnRemoveProfile;
-        private System.Windows.Forms.ListView lsvLaunchOrder;
         private System.Windows.Forms.Button btnMoveInstanceUp;
         private System.Windows.Forms.Button btnMoveInstanceDown;
         private System.Windows.Forms.Button btnLaunch;
@@ -436,6 +446,7 @@
         private System.Windows.Forms.ComboBox cbxNumberOfInstances;
         private System.Windows.Forms.CheckBox chkKeyboardControlsP1;
         private System.Windows.Forms.Label lblKeyboardControlsP1;
+        private System.Windows.Forms.ListBox lsbLaunchOrder;
     }
 }
 

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ElDewrito_Multi_Instance
 {
-    public class SettingsManager
+    public class SettingManager
     {
         string executableDirectoryPath;
 
@@ -18,6 +18,8 @@ namespace ElDewrito_Multi_Instance
         string antiAliasing;
         string vSync;
         sbyte numberOfInstances;
+        string consoleMode;
+        string keyboardControlsP1;
 
         public string Fullscreen { get => fullscreen; set => fullscreen = value; }
         public string ScreenResolution { get => screenResolution; set => screenResolution = value; }
@@ -25,8 +27,10 @@ namespace ElDewrito_Multi_Instance
         public string AntiAliasing { get => antiAliasing; set => antiAliasing = value; }
         public string VSync { get => vSync; set => vSync = value; }
         public sbyte NumberOfInstances { get => numberOfInstances; set => numberOfInstances = value; }
+        public string ConsoleMode { get => consoleMode; set => consoleMode = value; }
+        public string KeyboardControlsP1 { get => keyboardControlsP1; set => keyboardControlsP1 = value; }
 
-        public SettingsManager(string executableDirectoryPath)
+        public SettingManager(string executableDirectoryPath)
         {
             this.executableDirectoryPath = executableDirectoryPath;
 
@@ -41,6 +45,8 @@ namespace ElDewrito_Multi_Instance
             AntiAliasing = Properties.Settings.Default.AntiAliasing;
             VSync = Properties.Settings.Default.VSync;
             NumberOfInstances = Properties.Settings.Default.NumberOfInstances;
+            ConsoleMode = Properties.Settings.Default.ConsoleMode;
+            KeyboardControlsP1 = Properties.Settings.Default.KeyboardControlsP1;
         }
 
         public void WritePreferenceValue(string file, string prefKeyWithoutSpace, string newPrefVal)

@@ -2,26 +2,28 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace ElDewrito_Multi_Instance
 {
-    class ProcessManager
+    public class ProcessManager
     {
         string executableDirectoryPath;
-        ProfilesManager profilesManager;
-        SettingsManager settingsManager;
+        ProfileManager profileManager;
+        SettingManager settingManager;
 
-        public ProcessManager(string executableDirectoryPath, ProfilesManager profilesManager, SettingsManager settingsManager)
+        public string Configuration { get; }
+
+        public ProcessManager(string executableDirectoryPath, ProfileManager profileManager, SettingManager settingManager)
         {
             this.executableDirectoryPath = executableDirectoryPath;
-            this.profilesManager = profilesManager;
-            this.settingsManager = settingsManager;
+            this.profileManager = profileManager;
+            this.settingManager = settingManager;
+            Configuration = $"{executableDirectoryPath}\\emi.cfg";
         }
-
-        public List<int> Processes { get; set; } = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8 };
 
         /// <summary>
         /// Checks if a process is running... Duh...
@@ -35,7 +37,13 @@ namespace ElDewrito_Multi_Instance
 
         public void Launch(sbyte numberOfInstances)
         {
-
+            using (StreamReader r  = new StreamReader(Configuration))
+            {
+                for (int i = 0; i < System.IO.File.ReadLines(Configuration).Count(); i++)
+                {
+                    Process.Start($"{executableDirectoryPath}\\eldorado.exe", $"-instance {r.ReadLine()}");
+                }
+            }
         }
     }
 }
