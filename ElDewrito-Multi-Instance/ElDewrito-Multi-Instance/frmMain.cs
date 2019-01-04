@@ -124,7 +124,6 @@ namespace ElDewrito_Multi_Instance
             }
 
             //TODO fill cbxGraphicsQuality
-            
         }
 
         private void cbxNumberOfInstances_SelectedIndexChanged(object sender, EventArgs e)
@@ -170,6 +169,42 @@ namespace ElDewrito_Multi_Instance
                     profileManager.WriteProfileSetting(profileNames[i], "Input.ControllerPort", i.ToString());
                 }
             }
+        }
+
+        private void btnMoveInstanceUp_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < lsbLaunchOrder.Items.Count; i++)
+            {
+                if (lsbLaunchOrder.Items[i] == lsbLaunchOrder.SelectedItem && lsbLaunchOrder.SelectedIndex != 0)
+                {
+                    int newIndex = lsbLaunchOrder.SelectedIndex - 1;
+
+                    lsbLaunchOrder.Items.Insert(lsbLaunchOrder.SelectedIndex - 1, lsbLaunchOrder.Items[lsbLaunchOrder.SelectedIndex]);
+                    lsbLaunchOrder.Items.RemoveAt(lsbLaunchOrder.SelectedIndex);
+
+                    lsbLaunchOrder.SelectedIndex = newIndex;
+                }
+            }
+
+            profileManager.WriteSelectedProfiles(lsbLaunchOrder.Items.OfType<string>().ToArray());
+        }
+
+        private void btnMoveInstanceDown_Click(object sender, EventArgs e)
+        {
+            for (int i = lsbLaunchOrder.Items.Count - 1; i >= 0; i--)
+            {
+                if (lsbLaunchOrder.Items[i] == lsbLaunchOrder.SelectedItem && lsbLaunchOrder.SelectedIndex != lsbLaunchOrder.Items.Count - 1)
+                {
+                    int newIndex = lsbLaunchOrder.SelectedIndex + 1;
+
+                    lsbLaunchOrder.Items.Insert(lsbLaunchOrder.SelectedIndex + 2, lsbLaunchOrder.Items[lsbLaunchOrder.SelectedIndex]);
+                    lsbLaunchOrder.Items.RemoveAt(lsbLaunchOrder.SelectedIndex);
+
+                    lsbLaunchOrder.SelectedIndex = newIndex;
+                }
+            }
+            
+            profileManager.WriteSelectedProfiles(lsbLaunchOrder.Items.OfType<string>().ToArray());
         }
     }
 }

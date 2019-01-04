@@ -34,7 +34,11 @@ namespace ElDewrito_Multi_Instance
             List<string> configFiles = new List<string>();
             for (int i = 0; i < configFilesWithPath.Count; i++)
             {
-                if (configFilesWithPath[i].Contains("dewrito_prefs"))
+                if (configFilesWithPath[i].Contains("dewrito_prefs_") && configFilesWithPath[i].Contains("_tmp"))
+                {
+                    File.Delete(configFilesWithPath[i]);
+                }
+                else if (configFilesWithPath[i].Contains("dewrito_prefs"))
                 {
                     configFiles.Add(configFilesWithPath[i].Substring(configFilesWithPath[i].LastIndexOf('\\') + 1));
                 }

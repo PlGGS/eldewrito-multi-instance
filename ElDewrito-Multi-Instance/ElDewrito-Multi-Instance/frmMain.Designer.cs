@@ -92,7 +92,7 @@
             this.chkKeyboardControlsP1.Location = new System.Drawing.Point(116, 134);
             this.chkKeyboardControlsP1.Name = "chkKeyboardControlsP1";
             this.chkKeyboardControlsP1.Size = new System.Drawing.Size(15, 14);
-            this.chkKeyboardControlsP1.TabIndex = 16;
+            this.chkKeyboardControlsP1.TabIndex = 9;
             this.chkKeyboardControlsP1.UseVisualStyleBackColor = true;
             this.chkKeyboardControlsP1.CheckedChanged += new System.EventHandler(this.chkKeyboardControlsP1_CheckedChanged);
             // 
@@ -108,6 +108,7 @@
             // cbxNumberOfInstances
             // 
             this.cbxNumberOfInstances.FormattingEnabled = true;
+            this.cbxNumberOfInstances.ItemHeight = 13;
             this.cbxNumberOfInstances.Items.AddRange(new object[] {
             "1",
             "2",
@@ -120,7 +121,7 @@
             this.cbxNumberOfInstances.Location = new System.Drawing.Point(88, 20);
             this.cbxNumberOfInstances.Name = "cbxNumberOfInstances";
             this.cbxNumberOfInstances.Size = new System.Drawing.Size(43, 21);
-            this.cbxNumberOfInstances.TabIndex = 14;
+            this.cbxNumberOfInstances.TabIndex = 4;
             this.cbxNumberOfInstances.SelectedIndexChanged += new System.EventHandler(this.cbxNumberOfInstances_SelectedIndexChanged);
             // 
             // chkAntiAliasing
@@ -129,7 +130,7 @@
             this.chkAntiAliasing.Location = new System.Drawing.Point(116, 112);
             this.chkAntiAliasing.Name = "chkAntiAliasing";
             this.chkAntiAliasing.Size = new System.Drawing.Size(15, 14);
-            this.chkAntiAliasing.TabIndex = 13;
+            this.chkAntiAliasing.TabIndex = 8;
             this.chkAntiAliasing.UseVisualStyleBackColor = true;
             this.chkAntiAliasing.CheckedChanged += new System.EventHandler(this.chkAntiAliasing_CheckedChanged);
             // 
@@ -148,7 +149,7 @@
             this.chkConsoleMode.Location = new System.Drawing.Point(116, 67);
             this.chkConsoleMode.Name = "chkConsoleMode";
             this.chkConsoleMode.Size = new System.Drawing.Size(15, 14);
-            this.chkConsoleMode.TabIndex = 11;
+            this.chkConsoleMode.TabIndex = 6;
             this.chkConsoleMode.UseVisualStyleBackColor = true;
             this.chkConsoleMode.CheckedChanged += new System.EventHandler(this.chkConsoleMode_CheckedChanged);
             // 
@@ -167,7 +168,7 @@
             this.chkVSync.Location = new System.Drawing.Point(116, 90);
             this.chkVSync.Name = "chkVSync";
             this.chkVSync.Size = new System.Drawing.Size(15, 14);
-            this.chkVSync.TabIndex = 9;
+            this.chkVSync.TabIndex = 7;
             this.chkVSync.UseVisualStyleBackColor = true;
             this.chkVSync.CheckedChanged += new System.EventHandler(this.chkVSync_CheckedChanged);
             // 
@@ -229,7 +230,7 @@
             this.txtHResolution.Location = new System.Drawing.Point(80, 17);
             this.txtHResolution.Name = "txtHResolution";
             this.txtHResolution.Size = new System.Drawing.Size(51, 20);
-            this.txtHResolution.TabIndex = 17;
+            this.txtHResolution.TabIndex = 10;
             // 
             // lblHResolution
             // 
@@ -245,11 +246,12 @@
             this.txtVResolution.Location = new System.Drawing.Point(80, 42);
             this.txtVResolution.Name = "txtVResolution";
             this.txtVResolution.Size = new System.Drawing.Size(51, 20);
-            this.txtVResolution.TabIndex = 15;
+            this.txtVResolution.TabIndex = 11;
             // 
             // cbxGraphicsQuality
             // 
             this.cbxGraphicsQuality.FormattingEnabled = true;
+            this.cbxGraphicsQuality.ItemHeight = 13;
             this.cbxGraphicsQuality.Items.AddRange(new object[] {
             "low",
             "medium",
@@ -257,7 +259,7 @@
             this.cbxGraphicsQuality.Location = new System.Drawing.Point(80, 67);
             this.cbxGraphicsQuality.Name = "cbxGraphicsQuality";
             this.cbxGraphicsQuality.Size = new System.Drawing.Size(51, 21);
-            this.cbxGraphicsQuality.TabIndex = 14;
+            this.cbxGraphicsQuality.TabIndex = 12;
             // 
             // lblGraphicsQuality
             // 
@@ -294,10 +296,10 @@
             // 
             this.lsbLaunchOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lsbLaunchOrder.FormattingEnabled = true;
-            this.lsbLaunchOrder.Location = new System.Drawing.Point(3, 33);
+            this.lsbLaunchOrder.Location = new System.Drawing.Point(3, 20);
             this.lsbLaunchOrder.Name = "lsbLaunchOrder";
-            this.lsbLaunchOrder.Size = new System.Drawing.Size(135, 212);
-            this.lsbLaunchOrder.TabIndex = 21;
+            this.lsbLaunchOrder.Size = new System.Drawing.Size(135, 225);
+            this.lsbLaunchOrder.TabIndex = 13;
             // 
             // btnMoveInstanceUp
             // 
@@ -305,9 +307,10 @@
             this.btnMoveInstanceUp.Location = new System.Drawing.Point(3, 245);
             this.btnMoveInstanceUp.Name = "btnMoveInstanceUp";
             this.btnMoveInstanceUp.Size = new System.Drawing.Size(135, 23);
-            this.btnMoveInstanceUp.TabIndex = 19;
+            this.btnMoveInstanceUp.TabIndex = 14;
             this.btnMoveInstanceUp.Text = "Move up";
             this.btnMoveInstanceUp.UseVisualStyleBackColor = true;
+            this.btnMoveInstanceUp.Click += new System.EventHandler(this.btnMoveInstanceUp_Click);
             // 
             // btnMoveInstanceDown
             // 
@@ -315,9 +318,10 @@
             this.btnMoveInstanceDown.Location = new System.Drawing.Point(3, 268);
             this.btnMoveInstanceDown.Name = "btnMoveInstanceDown";
             this.btnMoveInstanceDown.Size = new System.Drawing.Size(135, 23);
-            this.btnMoveInstanceDown.TabIndex = 17;
+            this.btnMoveInstanceDown.TabIndex = 15;
             this.btnMoveInstanceDown.Text = "Move down";
             this.btnMoveInstanceDown.UseVisualStyleBackColor = true;
+            this.btnMoveInstanceDown.Click += new System.EventHandler(this.btnMoveInstanceDown_Click);
             // 
             // gbxProfiles
             // 
@@ -340,7 +344,7 @@
             this.clbProfiles.Location = new System.Drawing.Point(3, 23);
             this.clbProfiles.Name = "clbProfiles";
             this.clbProfiles.Size = new System.Drawing.Size(135, 199);
-            this.clbProfiles.TabIndex = 15;
+            this.clbProfiles.TabIndex = 0;
             this.clbProfiles.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbProfiles_ItemCheck);
             this.clbProfiles.SelectedIndexChanged += new System.EventHandler(this.clbProfiles_SelectedIndexChanged);
             // 
@@ -350,7 +354,7 @@
             this.btnReloadProfiles.Location = new System.Drawing.Point(3, 222);
             this.btnReloadProfiles.Name = "btnReloadProfiles";
             this.btnReloadProfiles.Size = new System.Drawing.Size(135, 23);
-            this.btnReloadProfiles.TabIndex = 14;
+            this.btnReloadProfiles.TabIndex = 1;
             this.btnReloadProfiles.Text = "Reload profiles";
             this.btnReloadProfiles.UseVisualStyleBackColor = true;
             this.btnReloadProfiles.Click += new System.EventHandler(this.btnReloadProfiles_Click);
@@ -361,7 +365,7 @@
             this.btnAddProfile.Location = new System.Drawing.Point(3, 245);
             this.btnAddProfile.Name = "btnAddProfile";
             this.btnAddProfile.Size = new System.Drawing.Size(135, 23);
-            this.btnAddProfile.TabIndex = 13;
+            this.btnAddProfile.TabIndex = 2;
             this.btnAddProfile.Text = "Add profile";
             this.btnAddProfile.UseVisualStyleBackColor = true;
             this.btnAddProfile.Click += new System.EventHandler(this.btnAddProfile_Click);
@@ -372,7 +376,7 @@
             this.btnRemoveProfile.Location = new System.Drawing.Point(3, 268);
             this.btnRemoveProfile.Name = "btnRemoveProfile";
             this.btnRemoveProfile.Size = new System.Drawing.Size(135, 23);
-            this.btnRemoveProfile.TabIndex = 12;
+            this.btnRemoveProfile.TabIndex = 3;
             this.btnRemoveProfile.Text = "Remove selected profile";
             this.btnRemoveProfile.UseVisualStyleBackColor = true;
             this.btnRemoveProfile.Click += new System.EventHandler(this.btnRemoveProfile_Click);
@@ -382,7 +386,7 @@
             this.btnLaunch.Location = new System.Drawing.Point(144, 164);
             this.btnLaunch.Name = "btnLaunch";
             this.btnLaunch.Size = new System.Drawing.Size(135, 23);
-            this.btnLaunch.TabIndex = 20;
+            this.btnLaunch.TabIndex = 16;
             this.btnLaunch.Text = "Launch";
             this.btnLaunch.UseVisualStyleBackColor = true;
             this.btnLaunch.Click += new System.EventHandler(this.btnLaunch_Click);

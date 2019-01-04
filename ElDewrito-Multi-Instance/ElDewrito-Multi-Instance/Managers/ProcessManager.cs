@@ -14,6 +14,7 @@ namespace ElDewrito_Multi_Instance
         string executableDirectoryPath;
         ProfileManager profileManager;
         SettingManager settingManager;
+        List<Process> processes = new List<Process>() { };
 
         public string Configuration { get; }
 
@@ -41,14 +42,22 @@ namespace ElDewrito_Multi_Instance
             {
                 for (int i = 0; i < System.IO.File.ReadLines(Configuration).Count(); i++)
                 {
-                    Process.Start($"{executableDirectoryPath}\\eldorado.exe", $"-instance {r.ReadLine()} -windowed {!Convert.ToBoolean(Convert.ToInt16(settingManager.Fullscreen))}");
+                    Process proc = new Process();
+                    proc.StartInfo = new ProcessStartInfo($"{executableDirectoryPath}\\eldorado.exe", $"-instance {r.ReadLine()} -windowed {!Convert.ToBoolean(Convert.ToInt16(settingManager.Fullscreen))}");
+                    processes.Add(proc);
+                    proc.Start();
                 }
             }
         }
 
         public void CloseInstances()
         {
-            //TODO save instances to temporary list for closing here
+            for (int i = 0; i < processes.Count; i++)
+            {
+                processes[i].Close();
+            }
+
+            processes.Clear();
         }
     }
 }
