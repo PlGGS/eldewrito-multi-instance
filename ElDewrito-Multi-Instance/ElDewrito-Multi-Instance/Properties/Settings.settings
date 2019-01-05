@@ -17,9 +17,6 @@
     <Setting Name="VSync" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="NumberOfInstances" Type="System.SByte" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
     <Setting Name="ConsoleMode" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>

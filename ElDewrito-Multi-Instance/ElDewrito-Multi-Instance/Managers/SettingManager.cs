@@ -17,7 +17,6 @@ namespace ElDewrito_Multi_Instance
         string graphicsQuality;
         string antiAliasing;
         string vSync;
-        sbyte numberOfInstances;
         string consoleMode;
         string keyboardControlsP1;
 
@@ -26,7 +25,6 @@ namespace ElDewrito_Multi_Instance
         public string GraphicsQuality { get => graphicsQuality; set => graphicsQuality = value; }
         public string AntiAliasing { get => antiAliasing; set => antiAliasing = value; }
         public string VSync { get => vSync; set => vSync = value; }
-        public sbyte NumberOfInstances { get => numberOfInstances; set => numberOfInstances = value; }
         public string ConsoleMode { get => consoleMode; set => consoleMode = value; }
         public string KeyboardControlsP1 { get => keyboardControlsP1; set => keyboardControlsP1 = value; }
 
@@ -44,7 +42,6 @@ namespace ElDewrito_Multi_Instance
             GraphicsQuality = Properties.Settings.Default.GraphicsQuality;
             AntiAliasing = Properties.Settings.Default.AntiAliasing;
             VSync = Properties.Settings.Default.VSync;
-            NumberOfInstances = Properties.Settings.Default.NumberOfInstances;
             ConsoleMode = Properties.Settings.Default.ConsoleMode;
             KeyboardControlsP1 = Properties.Settings.Default.KeyboardControlsP1;
         }

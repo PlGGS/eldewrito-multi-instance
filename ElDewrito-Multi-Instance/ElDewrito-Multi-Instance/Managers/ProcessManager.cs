@@ -36,7 +36,7 @@ namespace ElDewrito_Multi_Instance
             return Process.GetProcesses().Any(p => p.ProcessName.Contains(nameSubstring));
         }
 
-        public void Launch(sbyte numberOfInstances)
+        public void Launch(int numberOfInstances)
         {
             using (StreamReader r  = new StreamReader(Configuration))
             {
@@ -54,7 +54,7 @@ namespace ElDewrito_Multi_Instance
         {
             for (int i = 0; i < processes.Count; i++)
             {
-                processes[i].Close();
+                processes[i].Kill();
             }
 
             processes.Clear();

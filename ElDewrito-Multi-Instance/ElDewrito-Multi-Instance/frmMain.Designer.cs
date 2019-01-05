@@ -31,7 +31,6 @@
             this.gbxUniversalSettings = new System.Windows.Forms.GroupBox();
             this.chkKeyboardControlsP1 = new System.Windows.Forms.CheckBox();
             this.lblKeyboardControlsP1 = new System.Windows.Forms.Label();
-            this.cbxNumberOfInstances = new System.Windows.Forms.ComboBox();
             this.chkAntiAliasing = new System.Windows.Forms.CheckBox();
             this.lblAntiAliasing = new System.Windows.Forms.Label();
             this.chkConsoleMode = new System.Windows.Forms.CheckBox();
@@ -39,7 +38,6 @@
             this.chkVSync = new System.Windows.Forms.CheckBox();
             this.chkFullscreen = new System.Windows.Forms.CheckBox();
             this.lblVSync = new System.Windows.Forms.Label();
-            this.lblNumberOfInstances = new System.Windows.Forms.Label();
             this.lblFullscreen = new System.Windows.Forms.Label();
             this.gbxProfileSpecificSettings = new System.Windows.Forms.GroupBox();
             this.txtHResolution = new System.Windows.Forms.TextBox();
@@ -58,6 +56,8 @@
             this.btnAddProfile = new System.Windows.Forms.Button();
             this.btnRemoveProfile = new System.Windows.Forms.Button();
             this.btnLaunch = new System.Windows.Forms.Button();
+            this.chkConnectAllToServer = new System.Windows.Forms.CheckBox();
+            this.lblConnectAllToServer = new System.Windows.Forms.Label();
             this.gbxUniversalSettings.SuspendLayout();
             this.gbxProfileSpecificSettings.SuspendLayout();
             this.gbxLaunchOrder.SuspendLayout();
@@ -66,9 +66,10 @@
             // 
             // gbxUniversalSettings
             // 
+            this.gbxUniversalSettings.Controls.Add(this.chkConnectAllToServer);
+            this.gbxUniversalSettings.Controls.Add(this.lblConnectAllToServer);
             this.gbxUniversalSettings.Controls.Add(this.chkKeyboardControlsP1);
             this.gbxUniversalSettings.Controls.Add(this.lblKeyboardControlsP1);
-            this.gbxUniversalSettings.Controls.Add(this.cbxNumberOfInstances);
             this.gbxUniversalSettings.Controls.Add(this.chkAntiAliasing);
             this.gbxUniversalSettings.Controls.Add(this.lblAntiAliasing);
             this.gbxUniversalSettings.Controls.Add(this.chkConsoleMode);
@@ -76,7 +77,6 @@
             this.gbxUniversalSettings.Controls.Add(this.chkVSync);
             this.gbxUniversalSettings.Controls.Add(this.chkFullscreen);
             this.gbxUniversalSettings.Controls.Add(this.lblVSync);
-            this.gbxUniversalSettings.Controls.Add(this.lblNumberOfInstances);
             this.gbxUniversalSettings.Controls.Add(this.lblFullscreen);
             this.gbxUniversalSettings.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbxUniversalSettings.Location = new System.Drawing.Point(141, 0);
@@ -89,7 +89,7 @@
             // chkKeyboardControlsP1
             // 
             this.chkKeyboardControlsP1.AutoSize = true;
-            this.chkKeyboardControlsP1.Location = new System.Drawing.Point(116, 134);
+            this.chkKeyboardControlsP1.Location = new System.Drawing.Point(116, 112);
             this.chkKeyboardControlsP1.Name = "chkKeyboardControlsP1";
             this.chkKeyboardControlsP1.Size = new System.Drawing.Size(15, 14);
             this.chkKeyboardControlsP1.TabIndex = 9;
@@ -99,35 +99,17 @@
             // lblKeyboardControlsP1
             // 
             this.lblKeyboardControlsP1.AutoSize = true;
-            this.lblKeyboardControlsP1.Location = new System.Drawing.Point(6, 134);
+            this.lblKeyboardControlsP1.Location = new System.Drawing.Point(6, 112);
             this.lblKeyboardControlsP1.Name = "lblKeyboardControlsP1";
             this.lblKeyboardControlsP1.Size = new System.Drawing.Size(95, 13);
-            this.lblKeyboardControlsP1.TabIndex = 15;
+            this.lblKeyboardControlsP1.TabIndex = 0;
             this.lblKeyboardControlsP1.Text = "Kb / m controls P1";
-            // 
-            // cbxNumberOfInstances
-            // 
-            this.cbxNumberOfInstances.FormattingEnabled = true;
-            this.cbxNumberOfInstances.ItemHeight = 13;
-            this.cbxNumberOfInstances.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.cbxNumberOfInstances.Location = new System.Drawing.Point(88, 20);
-            this.cbxNumberOfInstances.Name = "cbxNumberOfInstances";
-            this.cbxNumberOfInstances.Size = new System.Drawing.Size(43, 21);
-            this.cbxNumberOfInstances.TabIndex = 4;
-            this.cbxNumberOfInstances.SelectedIndexChanged += new System.EventHandler(this.cbxNumberOfInstances_SelectedIndexChanged);
+            this.lblKeyboardControlsP1.Click += new System.EventHandler(this.lblKeyboardControlsP1_Click);
             // 
             // chkAntiAliasing
             // 
             this.chkAntiAliasing.AutoSize = true;
-            this.chkAntiAliasing.Location = new System.Drawing.Point(116, 112);
+            this.chkAntiAliasing.Location = new System.Drawing.Point(116, 90);
             this.chkAntiAliasing.Name = "chkAntiAliasing";
             this.chkAntiAliasing.Size = new System.Drawing.Size(15, 14);
             this.chkAntiAliasing.TabIndex = 8;
@@ -137,16 +119,17 @@
             // lblAntiAliasing
             // 
             this.lblAntiAliasing.AutoSize = true;
-            this.lblAntiAliasing.Location = new System.Drawing.Point(6, 112);
+            this.lblAntiAliasing.Location = new System.Drawing.Point(6, 90);
             this.lblAntiAliasing.Name = "lblAntiAliasing";
             this.lblAntiAliasing.Size = new System.Drawing.Size(63, 13);
-            this.lblAntiAliasing.TabIndex = 12;
+            this.lblAntiAliasing.TabIndex = 0;
             this.lblAntiAliasing.Text = "Anti aliasing";
+            this.lblAntiAliasing.Click += new System.EventHandler(this.lblAntiAliasing_Click);
             // 
             // chkConsoleMode
             // 
             this.chkConsoleMode.AutoSize = true;
-            this.chkConsoleMode.Location = new System.Drawing.Point(116, 67);
+            this.chkConsoleMode.Location = new System.Drawing.Point(116, 45);
             this.chkConsoleMode.Name = "chkConsoleMode";
             this.chkConsoleMode.Size = new System.Drawing.Size(15, 14);
             this.chkConsoleMode.TabIndex = 6;
@@ -156,16 +139,17 @@
             // lblConsoleMode
             // 
             this.lblConsoleMode.AutoSize = true;
-            this.lblConsoleMode.Location = new System.Drawing.Point(6, 67);
+            this.lblConsoleMode.Location = new System.Drawing.Point(6, 45);
             this.lblConsoleMode.Name = "lblConsoleMode";
             this.lblConsoleMode.Size = new System.Drawing.Size(74, 13);
-            this.lblConsoleMode.TabIndex = 10;
+            this.lblConsoleMode.TabIndex = 0;
             this.lblConsoleMode.Text = "Console mode";
+            this.lblConsoleMode.Click += new System.EventHandler(this.lblConsoleMode_Click);
             // 
             // chkVSync
             // 
             this.chkVSync.AutoSize = true;
-            this.chkVSync.Location = new System.Drawing.Point(116, 90);
+            this.chkVSync.Location = new System.Drawing.Point(116, 68);
             this.chkVSync.Name = "chkVSync";
             this.chkVSync.Size = new System.Drawing.Size(15, 14);
             this.chkVSync.TabIndex = 7;
@@ -175,7 +159,7 @@
             // chkFullscreen
             // 
             this.chkFullscreen.AutoSize = true;
-            this.chkFullscreen.Location = new System.Drawing.Point(116, 45);
+            this.chkFullscreen.Location = new System.Drawing.Point(116, 23);
             this.chkFullscreen.Name = "chkFullscreen";
             this.chkFullscreen.Size = new System.Drawing.Size(15, 14);
             this.chkFullscreen.TabIndex = 5;
@@ -185,29 +169,22 @@
             // lblVSync
             // 
             this.lblVSync.AutoSize = true;
-            this.lblVSync.Location = new System.Drawing.Point(6, 90);
+            this.lblVSync.Location = new System.Drawing.Point(6, 68);
             this.lblVSync.Name = "lblVSync";
             this.lblVSync.Size = new System.Drawing.Size(38, 13);
-            this.lblVSync.TabIndex = 4;
+            this.lblVSync.TabIndex = 0;
             this.lblVSync.Text = "VSync";
-            // 
-            // lblNumberOfInstances
-            // 
-            this.lblNumberOfInstances.AutoSize = true;
-            this.lblNumberOfInstances.Location = new System.Drawing.Point(6, 24);
-            this.lblNumberOfInstances.Name = "lblNumberOfInstances";
-            this.lblNumberOfInstances.Size = new System.Drawing.Size(75, 13);
-            this.lblNumberOfInstances.TabIndex = 3;
-            this.lblNumberOfInstances.Text = "# of Instances";
+            this.lblVSync.Click += new System.EventHandler(this.lblVSync_Click);
             // 
             // lblFullscreen
             // 
             this.lblFullscreen.AutoSize = true;
-            this.lblFullscreen.Location = new System.Drawing.Point(6, 45);
+            this.lblFullscreen.Location = new System.Drawing.Point(6, 23);
             this.lblFullscreen.Name = "lblFullscreen";
             this.lblFullscreen.Size = new System.Drawing.Size(55, 13);
             this.lblFullscreen.TabIndex = 0;
             this.lblFullscreen.Text = "Fullscreen";
+            this.lblFullscreen.Click += new System.EventHandler(this.lblFullscreen_Click);
             // 
             // gbxProfileSpecificSettings
             // 
@@ -391,6 +368,28 @@
             this.btnLaunch.UseVisualStyleBackColor = true;
             this.btnLaunch.Click += new System.EventHandler(this.btnLaunch_Click);
             // 
+            // chkConnectAllToServer
+            // 
+            this.chkConnectAllToServer.AutoSize = true;
+            this.chkConnectAllToServer.Enabled = false;
+            this.chkConnectAllToServer.Location = new System.Drawing.Point(116, 134);
+            this.chkConnectAllToServer.Name = "chkConnectAllToServer";
+            this.chkConnectAllToServer.Size = new System.Drawing.Size(15, 14);
+            this.chkConnectAllToServer.TabIndex = 11;
+            this.chkConnectAllToServer.UseVisualStyleBackColor = true;
+            this.chkConnectAllToServer.CheckedChanged += new System.EventHandler(this.chkConnectAllToServer_CheckedChanged);
+            // 
+            // lblConnectAllToServer
+            // 
+            this.lblConnectAllToServer.AutoSize = true;
+            this.lblConnectAllToServer.Enabled = false;
+            this.lblConnectAllToServer.Location = new System.Drawing.Point(6, 134);
+            this.lblConnectAllToServer.Name = "lblConnectAllToServer";
+            this.lblConnectAllToServer.Size = new System.Drawing.Size(104, 13);
+            this.lblConnectAllToServer.TabIndex = 10;
+            this.lblConnectAllToServer.Text = "Connect all to server";
+            this.lblConnectAllToServer.Click += new System.EventHandler(this.lblConnectAllToServer_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -425,7 +424,6 @@
         private System.Windows.Forms.CheckBox chkVSync;
         private System.Windows.Forms.CheckBox chkFullscreen;
         private System.Windows.Forms.Label lblVSync;
-        private System.Windows.Forms.Label lblNumberOfInstances;
         private System.Windows.Forms.Label lblFullscreen;
         private System.Windows.Forms.GroupBox gbxProfileSpecificSettings;
         private System.Windows.Forms.TextBox txtHResolution;
@@ -447,10 +445,11 @@
         private System.Windows.Forms.Label lblConsoleMode;
         private System.Windows.Forms.CheckBox chkAntiAliasing;
         private System.Windows.Forms.Label lblAntiAliasing;
-        private System.Windows.Forms.ComboBox cbxNumberOfInstances;
         private System.Windows.Forms.CheckBox chkKeyboardControlsP1;
         private System.Windows.Forms.Label lblKeyboardControlsP1;
         private System.Windows.Forms.ListBox lsbLaunchOrder;
+        private System.Windows.Forms.CheckBox chkConnectAllToServer;
+        private System.Windows.Forms.Label lblConnectAllToServer;
     }
 }
 

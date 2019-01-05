@@ -56,7 +56,13 @@
             this.ClientSize = new System.Drawing.Size(277, 73);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtProfileName);
+            this.DoubleBuffered = true;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(293, 112);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(293, 112);
             this.Name = "frmAddProfile";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Eldewrito Multi Instance";
             this.Load += new System.EventHandler(this.frmAddProfile_Load);
             this.ResumeLayout(false);

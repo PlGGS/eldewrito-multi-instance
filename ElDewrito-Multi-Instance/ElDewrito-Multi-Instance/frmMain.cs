@@ -50,7 +50,6 @@ namespace ElDewrito_Multi_Instance
         
         private void frmMain_Load(object sender, EventArgs e)
         {
-            cbxNumberOfInstances.SelectedIndex = Properties.Settings.Default.NumberOfInstances;
             chkFullscreen.Checked = Convert.ToBoolean(Convert.ToInt32(settingManager.Fullscreen));
             chkConsoleMode.Checked = Convert.ToBoolean(Convert.ToInt32(settingManager.ConsoleMode));
             chkVSync.Checked = Convert.ToBoolean(Convert.ToInt32(settingManager.VSync));
@@ -72,7 +71,7 @@ namespace ElDewrito_Multi_Instance
                 running = true;
                 btnLaunch.Text = "Close instances";
 
-                processManager.Launch(settingManager.NumberOfInstances);
+                processManager.Launch(lsbLaunchOrder.Items.Count);
             }
             else
             {
@@ -125,13 +124,7 @@ namespace ElDewrito_Multi_Instance
 
             //TODO fill cbxGraphicsQuality
         }
-
-        private void cbxNumberOfInstances_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.NumberOfInstances = Convert.ToSByte(cbxNumberOfInstances.SelectedIndex);
-            Properties.Settings.Default.Save();
-        }
-
+        
         public void AddProfileToProfiles(string name)
         {
             clbProfiles.Items.Add(name);
@@ -205,6 +198,43 @@ namespace ElDewrito_Multi_Instance
             }
             
             profileManager.WriteSelectedProfiles(lsbLaunchOrder.Items.OfType<string>().ToArray());
+        }
+
+        private void lblConsoleMode_Click(object sender, EventArgs e)
+        {
+            chkConsoleMode.Checked = !chkConsoleMode.Checked;
+
+            //TODO show console mode setup window
+        }
+
+        private void lblVSync_Click(object sender, EventArgs e)
+        {
+            chkVSync.Checked = !chkVSync.Checked;
+        }
+
+        private void lblAntiAliasing_Click(object sender, EventArgs e)
+        {
+            chkAntiAliasing.Checked = !chkAntiAliasing.Checked;
+        }
+
+        private void lblKeyboardControlsP1_Click(object sender, EventArgs e)
+        {
+            chkKeyboardControlsP1.Checked = !chkKeyboardControlsP1.Checked;
+        }
+
+        private void lblFullscreen_Click(object sender, EventArgs e)
+        {
+            chkFullscreen.Checked = !chkFullscreen.Checked;
+        }
+
+        private void lblConnectAllToServer_Click(object sender, EventArgs e)
+        {
+            chkConnectAllToServer.Checked = !chkConnectAllToServer.Checked;
+        }
+
+        private void chkConnectAllToServer_CheckedChanged(object sender, EventArgs e)
+        {
+            //TODO check if checked, if not, new form with browser, if so, uncheck
         }
     }
 }
