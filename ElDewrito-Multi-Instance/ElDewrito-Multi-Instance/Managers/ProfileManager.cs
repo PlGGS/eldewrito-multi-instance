@@ -50,8 +50,7 @@ namespace ElDewrito_Multi_Instance
                 //TODO figure out why configFiles is empty and then after it's not do: Environment.Exit(0);
             }
 
-            settingManager.WritePreferenceValue(configFiles[configFiles.IndexOf("dewrito_prefs.cfg")], "Player.Name", "Blake");
-            string playerName = settingManager.ReadPreferenceValue(configFiles[configFiles.IndexOf("dewrito_prefs.cfg")], "Player.Name");
+            string playerName = ReadProfileSetting("", "Player.Name");
 
             //check if _username_in_file.cfg is in the list of files
             if (!configFiles.Contains($"dewrito_prefs_{playerName.Substring(1, playerName.Length - 2)}.cfg"))
@@ -82,8 +81,6 @@ namespace ElDewrito_Multi_Instance
             {
                 clbProfiles.Items.Add(Profiles.Keys.ToList()[i]);
             }
-
-            //TODO loop through clbProfiles and add profile names
         }
 
         public void ReloadProfiles()
@@ -94,7 +91,13 @@ namespace ElDewrito_Multi_Instance
 
         public string ReadProfileSetting(string profileName, string setting)
         {
-            string sourcePrefsFile = "dewrito_prefs_" + profileName + ".cfg";
+            string sourcePrefsFile = "dewrito_prefs.cfg";
+
+            if (profileName != "")
+            {
+                sourcePrefsFile = $"dewrito_prefs_{profileName}.cfg";
+            }
+
             string value = null;
 
             //Read the appropriate line to get value from the file
@@ -121,7 +124,6 @@ namespace ElDewrito_Multi_Instance
         {
             int writeLineNum = -1; //Lines start at 1
             string sourcePrefsFile = $"dewrito_prefs_{profileName}.cfg";
-            string destinationPrefsFile = $"dewrito_prefs_{profileName}.cfg";
             string tempPrefsFile = $"dewrito_prefs_{profileName}_tmp.cfg";
 
             //Read the appropriate line from the file
@@ -137,6 +139,7 @@ namespace ElDewrito_Multi_Instance
                     {
                         writeLineNum = i;
                         lineToWrite = tmp;
+                        Console.WriteLine($"line to write: {lineToWrite}");
                     }
                 }
             }
@@ -146,7 +149,7 @@ namespace ElDewrito_Multi_Instance
             if (writeLineNum != -1)
             {
                 //TODO see if this changes lineToWrite's setting to value
-                lineToWrite = lineToWrite.Substring(0, lineToWrite.IndexOf(' ') + 1) + value;
+                lineToWrite = lineToWrite.Substring(0, lineToWrite.IndexOf(' ') + 1) + $"\"{value}\"";
                 using (StreamReader reader = new StreamReader(sourcePrefsFile))
                 {
                     using (StreamWriter writer = new StreamWriter(tempPrefsFile))
@@ -165,33 +168,54 @@ namespace ElDewrito_Multi_Instance
                         }
                     }
                 }
+
+                File.Delete(sourcePrefsFile);
+                File.Copy(tempPrefsFile, sourcePrefsFile);
+                File.Delete(tempPrefsFile);
             }
             else
             {
-                //show messagebox saying couldnt find setting to change
                 MessageBox.Show($"Failed to locate the setting: {setting} in {sourcePrefsFile}");
             }
 
-            if (profileName.Substring(profileName.Length - 2).ToLower() == "s")
+            if (profileName == "S" || profileName == "s" || (profileName.Length != 1 && profileName.Substring(profileName.Length - 2).ToLower() == "s"))
             {
-                Console.WriteLine($"Wrote {profileName}' {setting} to {value} at line {line}");
+                Console.WriteLine($"Wrote {profileName}' {setting} to {value} at line {writeLineNum} in {sourcePrefsFile}");
             }
             else
             {
-                Console.WriteLine($"Wrote {profileName}'s {setting} to {value} at line {line}");
+                Console.WriteLine($"Wrote {profileName}'s {setting} to {value} at line {writeLineNum} in {sourcePrefsFile}");
+            }
+
+            using (StreamReader reader = new StreamReader(sourcePrefsFile))
+            {
+                for (int i = 1; i <= File.ReadLines(sourcePrefsFile).Count(); i++)
+                {
+                    string tmp = reader.ReadLine();
+
+                    //If line.ToLower() contains setting string then set writeLineNum
+                    if (tmp.ToLower().Contains(setting.ToLower()))
+                    {
+                        writeLineNum = i;
+                        lineToWrite = tmp;
+                        Console.WriteLine($"line written: {lineToWrite}");
+                    }
+                }
             }
         }
 
         public void CreateProfilePrefs(string name)
         {
-            //TODO properly write new profile prefs file
-            File.Create($"{Path.GetDirectoryName(Application.ExecutablePath)}\\dewrito_prefs_{name}.cfg");
+            string file = $"{Path.GetDirectoryName(Application.ExecutablePath)}\\dewrito_prefs_{name}.cfg";
+
+            File.WriteAllBytes(file, Properties.Resources.default_dewrito_prefs);
+            WriteProfileSetting(name, "Player.Name", name);
         }
 
         public void DeleteProfilePrefs(string name)
         {
-            //TODO delete profile prefs file
             File.Delete($"{Path.GetDirectoryName(Application.ExecutablePath)}\\dewrito_prefs_{name}.cfg");
+            Profiles.Remove(name);
         }
 
         public void WriteSelectedProfiles(string[] profileNames)

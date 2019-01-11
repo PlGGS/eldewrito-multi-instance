@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.gbxUniversalSettings = new System.Windows.Forms.GroupBox();
+            this.chkConnectAllToServer = new System.Windows.Forms.CheckBox();
+            this.lblConnectAllToServer = new System.Windows.Forms.Label();
             this.chkKeyboardControlsP1 = new System.Windows.Forms.CheckBox();
             this.lblKeyboardControlsP1 = new System.Windows.Forms.Label();
             this.chkAntiAliasing = new System.Windows.Forms.CheckBox();
@@ -56,8 +58,6 @@
             this.btnAddProfile = new System.Windows.Forms.Button();
             this.btnRemoveProfile = new System.Windows.Forms.Button();
             this.btnLaunch = new System.Windows.Forms.Button();
-            this.chkConnectAllToServer = new System.Windows.Forms.CheckBox();
-            this.lblConnectAllToServer = new System.Windows.Forms.Label();
             this.gbxUniversalSettings.SuspendLayout();
             this.gbxProfileSpecificSettings.SuspendLayout();
             this.gbxLaunchOrder.SuspendLayout();
@@ -85,6 +85,28 @@
             this.gbxUniversalSettings.TabIndex = 19;
             this.gbxUniversalSettings.TabStop = false;
             this.gbxUniversalSettings.Text = "Universal Settings";
+            // 
+            // chkConnectAllToServer
+            // 
+            this.chkConnectAllToServer.AutoSize = true;
+            this.chkConnectAllToServer.Enabled = false;
+            this.chkConnectAllToServer.Location = new System.Drawing.Point(116, 134);
+            this.chkConnectAllToServer.Name = "chkConnectAllToServer";
+            this.chkConnectAllToServer.Size = new System.Drawing.Size(15, 14);
+            this.chkConnectAllToServer.TabIndex = 11;
+            this.chkConnectAllToServer.UseVisualStyleBackColor = true;
+            this.chkConnectAllToServer.CheckedChanged += new System.EventHandler(this.chkConnectAllToServer_CheckedChanged);
+            // 
+            // lblConnectAllToServer
+            // 
+            this.lblConnectAllToServer.AutoSize = true;
+            this.lblConnectAllToServer.Enabled = false;
+            this.lblConnectAllToServer.Location = new System.Drawing.Point(6, 134);
+            this.lblConnectAllToServer.Name = "lblConnectAllToServer";
+            this.lblConnectAllToServer.Size = new System.Drawing.Size(104, 13);
+            this.lblConnectAllToServer.TabIndex = 10;
+            this.lblConnectAllToServer.Text = "Connect all to server";
+            this.lblConnectAllToServer.Click += new System.EventHandler(this.lblConnectAllToServer_Click);
             // 
             // chkKeyboardControlsP1
             // 
@@ -129,6 +151,7 @@
             // chkConsoleMode
             // 
             this.chkConsoleMode.AutoSize = true;
+            this.chkConsoleMode.Enabled = false;
             this.chkConsoleMode.Location = new System.Drawing.Point(116, 45);
             this.chkConsoleMode.Name = "chkConsoleMode";
             this.chkConsoleMode.Size = new System.Drawing.Size(15, 14);
@@ -139,6 +162,7 @@
             // lblConsoleMode
             // 
             this.lblConsoleMode.AutoSize = true;
+            this.lblConsoleMode.Enabled = false;
             this.lblConsoleMode.Location = new System.Drawing.Point(6, 45);
             this.lblConsoleMode.Name = "lblConsoleMode";
             this.lblConsoleMode.Size = new System.Drawing.Size(74, 13);
@@ -208,6 +232,7 @@
             this.txtHResolution.Name = "txtHResolution";
             this.txtHResolution.Size = new System.Drawing.Size(51, 20);
             this.txtHResolution.TabIndex = 10;
+            this.txtHResolution.TextChanged += new System.EventHandler(this.txtHResolution_TextChanged);
             // 
             // lblHResolution
             // 
@@ -224,6 +249,7 @@
             this.txtVResolution.Name = "txtVResolution";
             this.txtVResolution.Size = new System.Drawing.Size(51, 20);
             this.txtVResolution.TabIndex = 11;
+            this.txtVResolution.TextChanged += new System.EventHandler(this.txtVResolution_TextChanged);
             // 
             // cbxGraphicsQuality
             // 
@@ -367,28 +393,6 @@
             this.btnLaunch.Text = "Launch";
             this.btnLaunch.UseVisualStyleBackColor = true;
             this.btnLaunch.Click += new System.EventHandler(this.btnLaunch_Click);
-            // 
-            // chkConnectAllToServer
-            // 
-            this.chkConnectAllToServer.AutoSize = true;
-            this.chkConnectAllToServer.Enabled = false;
-            this.chkConnectAllToServer.Location = new System.Drawing.Point(116, 134);
-            this.chkConnectAllToServer.Name = "chkConnectAllToServer";
-            this.chkConnectAllToServer.Size = new System.Drawing.Size(15, 14);
-            this.chkConnectAllToServer.TabIndex = 11;
-            this.chkConnectAllToServer.UseVisualStyleBackColor = true;
-            this.chkConnectAllToServer.CheckedChanged += new System.EventHandler(this.chkConnectAllToServer_CheckedChanged);
-            // 
-            // lblConnectAllToServer
-            // 
-            this.lblConnectAllToServer.AutoSize = true;
-            this.lblConnectAllToServer.Enabled = false;
-            this.lblConnectAllToServer.Location = new System.Drawing.Point(6, 134);
-            this.lblConnectAllToServer.Name = "lblConnectAllToServer";
-            this.lblConnectAllToServer.Size = new System.Drawing.Size(104, 13);
-            this.lblConnectAllToServer.TabIndex = 10;
-            this.lblConnectAllToServer.Text = "Connect all to server";
-            this.lblConnectAllToServer.Click += new System.EventHandler(this.lblConnectAllToServer_Click);
             // 
             // frmMain
             // 

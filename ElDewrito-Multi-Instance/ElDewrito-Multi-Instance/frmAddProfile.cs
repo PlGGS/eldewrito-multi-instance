@@ -14,7 +14,6 @@ namespace ElDewrito_Multi_Instance
     {
         readonly Point xy;
         ProfileManager profileManager;
-        string name;
         CheckedListBox clbProfiles;
 
         public frmAddProfile(Point xy, CheckedListBox clbProfiles, ProfileManager profileManager)
@@ -32,9 +31,8 @@ namespace ElDewrito_Multi_Instance
                 MessageBox.Show("Please enter a name with a minimum of 1 and a maximum of 15 characters!", "Eldewrito Multi Instance");
                 return;
             }
-
-            name = txtProfileName.Text;
-            profileManager.CreateProfilePrefs(name);
+            
+            profileManager.CreateProfilePrefs(txtProfileName.Text);
             profileManager.ReloadProfiles();
 
             Close();

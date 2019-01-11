@@ -118,13 +118,30 @@ namespace ElDewrito_Multi_Instance
 
             if (resolution != "default")
             {
-                txtHResolution.Text = resolution.Substring(0, resolution.Length - resolution.IndexOf('x') - 1);
-                txtVResolution.Text = resolution.Substring(resolution.IndexOf('x') + 1, resolution.Length - (resolution.IndexOf('x') + 1));
+                SetHAndVResolutions(resolution);
+            }
+            else
+            {
+                profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.ScreenResolution", "1920x1080");
+                SetHAndVResolutions(profileManager.ReadProfileSetting(clbProfiles.Text, "Settings.ScreenResolution"));
+            }
+
+            void SetHAndVResolutions(string res)
+            {
+                try
+                {
+                    txtHResolution.Text = res.Substring(0, res.Length - res.IndexOf('x') - 1); //TODO figure out why 1280x720 is not working
+                    txtVResolution.Text = res.Substring(res.IndexOf('x') + 1, res.Length - (res.IndexOf('x') + 1));
+                }
+                catch (Exception)
+                {
+                    profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.ScreenResolution", $"{Screen.PrimaryScreen.Bounds.Width}x{ Screen.PrimaryScreen.Bounds.Height}");
+                }
             }
 
             //TODO fill cbxGraphicsQuality
         }
-        
+
         public void AddProfileToProfiles(string name)
         {
             clbProfiles.Items.Add(name);
@@ -235,6 +252,44 @@ namespace ElDewrito_Multi_Instance
         private void chkConnectAllToServer_CheckedChanged(object sender, EventArgs e)
         {
             //TODO check if checked, if not, new form with browser, if so, uncheck
+        }
+
+        private void txtHResolution_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtHResolution.Text == "")
+                {
+                    profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.ScreenResolution", $"640x{txtVResolution.Text}");
+                }
+                else
+                {
+                    profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.ScreenResolution", $"{txtHResolution.Text}x{txtVResolution.Text}");
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void txtVResolution_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtVResolution.Text == "")
+                {
+                    profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.ScreenResolution", $"{txtHResolution.Text}x480");
+                }
+                else
+                {
+                    profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.ScreenResolution", $"{txtHResolution.Text}x{txtVResolution.Text}");
+                }
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }
