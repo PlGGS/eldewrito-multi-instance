@@ -55,6 +55,8 @@ namespace ElDewrito_Multi_Instance
             chkVSync.Checked = Convert.ToBoolean(Convert.ToInt32(settingManager.VSync));
             chkAntiAliasing.Checked = Convert.ToBoolean(Convert.ToInt32(settingManager.AntiAliasing));
             chkKeyboardControlsP1.Checked = Convert.ToBoolean(Convert.ToInt32(settingManager.KeyboardControlsP1));
+
+            clbProfiles.SelectedIndex = 0;
         }
 
         private void frmMain_Resize(object sender, EventArgs e)
@@ -84,31 +86,31 @@ namespace ElDewrito_Multi_Instance
 
         private void chkFullscreen_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Fullscreen = Convert.ToInt16(chkFullscreen.Checked).ToString();
+            settingManager.Fullscreen = Convert.ToInt16(chkFullscreen.Checked).ToString();
             Properties.Settings.Default.Save();
         }
 
         private void chkConsoleMode_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.ConsoleMode = Convert.ToInt16(chkConsoleMode.Checked).ToString();
+            settingManager.ConsoleMode = Convert.ToInt16(chkConsoleMode.Checked).ToString();
             Properties.Settings.Default.Save();
         }
 
         private void chkVSync_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.VSync = Convert.ToInt16(chkVSync.Checked).ToString();
+            settingManager.VSync = Convert.ToInt16(chkVSync.Checked).ToString();
             Properties.Settings.Default.Save();
         }
 
         private void chkAntiAliasing_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.AntiAliasing = Convert.ToInt16(chkAntiAliasing.Checked).ToString();
+            settingManager.AntiAliasing = Convert.ToInt16(chkAntiAliasing.Checked).ToString();
             Properties.Settings.Default.Save();
         }
 
         private void chkKeyboardControlsP1_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.KeyboardControlsP1 = Convert.ToInt16(chkKeyboardControlsP1.Checked).ToString();
+            settingManager.KeyboardControlsP1 = Convert.ToInt16(chkKeyboardControlsP1.Checked).ToString();
             Properties.Settings.Default.Save();
         }
 
@@ -139,7 +141,61 @@ namespace ElDewrito_Multi_Instance
                 }
             }
 
-            //TODO fill cbxGraphicsQuality
+            SetcbxGraphicsQuality();
+        }
+
+        private void SetcbxGraphicsQuality()
+        {
+            string[] qualities = profileManager.ReadProfileSettings(clbProfiles.Text, new string[] { "Settings.DetailsQuality",
+                                                                                        "Settings.EffectsQuality",
+                                                                                        "Settings.LightingQuality",
+                                                                                        "Settings.PostprocessingQuality",
+                                                                                        "Settings.ShadowQuality",
+                                                                                        "Settings.TextureFilteringQuality",
+                                                                                        "Settings.TextureResolution" });
+
+            if (Enumerable.SequenceEqual(qualities, new string[] { "low", "low", "low", "low", "low", "low", "low" }))
+            {
+                cbxGraphicsQuality.SelectedIndex = 0;
+            }
+            else if (Enumerable.SequenceEqual(qualities, new string[] { "medium", "medium", "medium", "medium", "medium", "medium", "medium" }))
+            {
+                cbxGraphicsQuality.SelectedIndex = 1;
+            }
+            else if (Enumerable.SequenceEqual(qualities, new string[] { "high", "high", "high", "high", "high", "high", "high" }))
+            {
+                cbxGraphicsQuality.SelectedIndex = 2;
+            }
+            else
+            {
+                if (qualities[0] == "low")
+                {
+                    for (int i = 1; i < qualities.Length; i++)
+                    {
+                        profileManager.WriteProfileSetting(clbProfiles.Text, qualities[i], "low");
+                    }
+
+                    cbxGraphicsQuality.SelectedIndex = 0;
+                }
+                else if (qualities[0] == "medium")
+                {
+                    for (int i = 1; i < qualities.Length; i++)
+                    {
+                        profileManager.WriteProfileSetting(clbProfiles.Text, qualities[i], "medium");
+                    }
+
+                    cbxGraphicsQuality.SelectedIndex = 1;
+                }
+                else if (qualities[0] == "high")
+                {
+                    for (int i = 1; i < qualities.Length; i++)
+                    {
+                        profileManager.WriteProfileSetting(clbProfiles.Text, qualities[i], "high");
+                    }
+
+                    cbxGraphicsQuality.SelectedIndex = 2;
+                }
+            }
         }
 
         public void AddProfileToProfiles(string name)
@@ -290,6 +346,34 @@ namespace ElDewrito_Multi_Instance
             {
 
             }
+        }
+
+        private void cbxGraphicsQuality_TextChanged(object sender, EventArgs e)
+        {
+            WriteQuality();
+        }
+
+        private void WriteQuality()
+        {
+            string[] qualities = profileManager.ReadProfileSettings(clbProfiles.Text, new string[] { "Settings.DetailsQuality",
+                                                                                        "Settings.EffectsQuality",
+                                                                                        "Settings.LightingQuality",
+                                                                                        "Settings.PostprocessingQuality",
+                                                                                        "Settings.ShadowQuality",
+                                                                                        "Settings.TextureFilteringQuality",
+                                                                                        "Settings.TextureResolution" });
+
+            if (!Enumerable.SequenceEqual(qualities, new string[] { cbxGraphicsQuality.Text, cbxGraphicsQuality.Text, cbxGraphicsQuality.Text, cbxGraphicsQuality.Text, cbxGraphicsQuality.Text, cbxGraphicsQuality.Text, cbxGraphicsQuality.Text }))
+            {
+                profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.DetailsQuality", cbxGraphicsQuality.Text);
+                profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.EffectsQuality", cbxGraphicsQuality.Text);
+                profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.LightingQuality", cbxGraphicsQuality.Text);
+                profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.PostprocessingQuality", cbxGraphicsQuality.Text);
+                profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.ShadowQuality", cbxGraphicsQuality.Text);
+                profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.TextureFilteringQuality", cbxGraphicsQuality.Text);
+                profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.TextureResolution", cbxGraphicsQuality.Text);
+            }
+
         }
     }
 }

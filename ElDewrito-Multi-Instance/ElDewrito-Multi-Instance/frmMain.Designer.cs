@@ -263,6 +263,8 @@
             this.cbxGraphicsQuality.Name = "cbxGraphicsQuality";
             this.cbxGraphicsQuality.Size = new System.Drawing.Size(51, 21);
             this.cbxGraphicsQuality.TabIndex = 12;
+            this.cbxGraphicsQuality.TextChanged += new System.EventHandler(this.cbxGraphicsQuality_TextChanged);
+            this.cbxGraphicsQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // lblGraphicsQuality
             // 

@@ -62,7 +62,7 @@ namespace ElDewrito_Multi_Instance
                 {
                     if (i == 0)
                     {
-                        if (Convert.ToBoolean(Convert.ToInt32(Properties.Settings.Default.KeyboardControlsP1)))
+                        if (Convert.ToBoolean(Convert.ToInt32(settingManager.KeyboardControlsP1)))
                         {
                             profileManager.WriteProfileSetting(name, "Settings.Gamepad", "0");
                         }
@@ -79,8 +79,8 @@ namespace ElDewrito_Multi_Instance
                     try
                     {
                         profileManager.WriteProfileSetting(name, "Settings.Fullscreen", "0");
-                        profileManager.WriteProfileSetting(name, "Settings.VSync", Convert.ToInt32(Convert.ToBoolean(Convert.ToInt32(Properties.Settings.Default.VSync))).ToString());
-                        profileManager.WriteProfileSetting(name, "Settings.Antialiasing", Convert.ToInt32(Convert.ToBoolean(Convert.ToInt32(Properties.Settings.Default.AntiAliasing))).ToString());
+                        profileManager.WriteProfileSetting(name, "Settings.VSync", Convert.ToInt32(Convert.ToBoolean(Convert.ToInt32(settingManager.VSync))).ToString());
+                        profileManager.WriteProfileSetting(name, "Settings.Antialiasing", Convert.ToInt32(Convert.ToBoolean(Convert.ToInt32(settingManager.AntiAliasing))).ToString());
                     }
                     catch (Exception)
                     {

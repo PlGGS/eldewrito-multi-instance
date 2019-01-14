@@ -120,6 +120,45 @@ namespace ElDewrito_Multi_Instance
             return value;
         }
 
+        public string[] ReadProfileSettings(string profileName, string[] settings)
+        {
+            string sourcePrefsFile = "dewrito_prefs.cfg";
+
+            if (profileName != "")
+            {
+                sourcePrefsFile = $"dewrito_prefs_{profileName}.cfg";
+            }
+
+            string[] values = new string[settings.Length];
+
+            //Read the appropriate line to get value from the file
+            using (StreamReader reader = new StreamReader(sourcePrefsFile))
+            {
+                for (int i = 1; i <= File.ReadLines(sourcePrefsFile).Count(); i++)
+                {
+                    string tmp = reader.ReadLine();
+
+                    for (int o = 0; o < settings.Length; o++)
+                    {
+                        //If line contains value string then set value variable equal to the file's setting's value
+                        if (tmp.Contains(settings[o]))
+                        {
+                            Console.WriteLine(tmp);
+                            values[o] = tmp.Substring(tmp.IndexOf('\"') + 1, tmp.Length - tmp.IndexOf('\"') - 2); //TODO make sure this returns value without any "s
+
+                            for (int p = 0; p < values.Length; p++)
+                            {
+                                Console.WriteLine(values[p]);
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            return values;
+        }
+
         public void WriteProfileSetting(string profileName, string setting, string value) //TODO think about changing this to object and then using this method to automatically turn object into string like in the read method
         {
             int writeLineNum = -1; //Lines start at 1
