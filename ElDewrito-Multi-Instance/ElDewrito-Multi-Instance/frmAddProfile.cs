@@ -31,7 +31,7 @@ namespace ElDewrito_Multi_Instance
                 MessageBox.Show("Please enter a name with a minimum of 1 and a maximum of 15 characters!", "Eldewrito Multi Instance");
                 return;
             }
-            
+
             profileManager.CreateProfilePrefs(txtProfileName.Text);
             profileManager.ReloadProfiles();
 

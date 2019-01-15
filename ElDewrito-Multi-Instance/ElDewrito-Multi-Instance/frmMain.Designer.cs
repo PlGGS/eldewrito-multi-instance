@@ -253,6 +253,7 @@
             // 
             // cbxGraphicsQuality
             // 
+            this.cbxGraphicsQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxGraphicsQuality.FormattingEnabled = true;
             this.cbxGraphicsQuality.ItemHeight = 13;
             this.cbxGraphicsQuality.Items.AddRange(new object[] {
@@ -264,7 +265,6 @@
             this.cbxGraphicsQuality.Size = new System.Drawing.Size(51, 21);
             this.cbxGraphicsQuality.TabIndex = 12;
             this.cbxGraphicsQuality.TextChanged += new System.EventHandler(this.cbxGraphicsQuality_TextChanged);
-            this.cbxGraphicsQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // lblGraphicsQuality
             // 
@@ -388,6 +388,7 @@
             // 
             // btnLaunch
             // 
+            this.btnLaunch.Enabled = false;
             this.btnLaunch.Location = new System.Drawing.Point(144, 164);
             this.btnLaunch.Name = "btnLaunch";
             this.btnLaunch.Size = new System.Drawing.Size(135, 23);
@@ -398,6 +399,7 @@
             // 
             // frmMain
             // 
+            this.AcceptButton = this.btnLaunch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 294);

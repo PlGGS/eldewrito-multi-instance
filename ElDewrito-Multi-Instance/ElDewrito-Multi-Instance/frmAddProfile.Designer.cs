@@ -44,13 +44,14 @@
             this.btnAdd.Location = new System.Drawing.Point(12, 38);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(253, 23);
-            this.btnAdd.TabIndex = 21;
+            this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add profile";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // frmAddProfile
             // 
+            this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(277, 73);

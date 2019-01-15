@@ -125,7 +125,7 @@ namespace ElDewrito_Multi_Instance
                     }
                     else
                     {
-                        if (Convert.ToBoolean(settingManager.ConsoleMode))
+                        if (Convert.ToBoolean(Convert.ToInt32(settingManager.ConsoleMode)))
                         {
                             //TODO place instance based off of amount of instances and split screen preference
                         }
@@ -142,14 +142,13 @@ namespace ElDewrito_Multi_Instance
         {
             for (int i = 0; i < processes.Count; i++)
             {
-                //TODO check whether or not instances are still running
                 try
                 {
                     processes[i].Kill();
                 }
                 catch (Exception)
                 {
-
+                    Console.WriteLine($"Couldn't kill {processes[i].ProcessName}. It was probably already closed.");
                 }
             }
 

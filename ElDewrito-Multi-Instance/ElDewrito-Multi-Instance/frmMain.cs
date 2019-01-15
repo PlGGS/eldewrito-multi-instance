@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,7 +16,10 @@ namespace ElDewrito_Multi_Instance
     public partial class frmMain : Form
     {
         bool running = false;
+        bool deletingProfile = false;
         string executableDirectoryPath;
+        BindingList<string> lsbLaunchOrderItems = new BindingList<string>(); //Why on Earth do listboxes not have a proper changed handler?
+
         ProfileManager profileManager;
         SettingManager settingManager;
         ProcessManager processManager;
@@ -44,12 +49,20 @@ namespace ElDewrito_Multi_Instance
 
         private void btnRemoveProfile_Click(object sender, EventArgs e)
         {
-            profileManager.DeleteProfilePrefs(clbProfiles.Text); //TODO figure out why this is passing ""
-            clbProfiles.Items.Remove(clbProfiles.SelectedItem);
+            profileManager.DeleteProfilePrefs(clbProfiles.Text);
+            lsbLaunchOrderItems.Remove(clbProfiles.Text);
+
+            deletingProfile = true;
+            clbProfiles.Items.Remove(clbProfiles.Text);
         }
-        
+
         private void frmMain_Load(object sender, EventArgs e)
         {
+            Text = $"ElDewrito Multi Instance {FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion}";
+
+            lsbLaunchOrder.DataSource = lsbLaunchOrderItems;
+            lsbLaunchOrderItems.ListChanged += new ListChangedEventHandler(list_ListChanged);
+
             chkFullscreen.Checked = Convert.ToBoolean(Convert.ToInt32(settingManager.Fullscreen));
             chkConsoleMode.Checked = Convert.ToBoolean(Convert.ToInt32(settingManager.ConsoleMode));
             chkVSync.Checked = Convert.ToBoolean(Convert.ToInt32(settingManager.VSync));
@@ -58,7 +71,7 @@ namespace ElDewrito_Multi_Instance
 
             clbProfiles.SelectedIndex = 0;
         }
-
+        
         private void frmMain_Resize(object sender, EventArgs e)
         {
             clbProfiles.Bounds = new Rectangle(clbProfiles.Location, new Size(clbProfiles.Width, btnReloadProfiles.Top - 22));
@@ -73,7 +86,7 @@ namespace ElDewrito_Multi_Instance
                 running = true;
                 btnLaunch.Text = "Close instances";
 
-                processManager.Launch(lsbLaunchOrder.Items.Count);
+                processManager.Launch(lsbLaunchOrderItems.Count);
             }
             else
             {
@@ -116,32 +129,40 @@ namespace ElDewrito_Multi_Instance
 
         private void clbProfiles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string resolution = profileManager.ReadProfileSetting(clbProfiles.Text, "Settings.ScreenResolution");
-
-            if (resolution != "default")
+            if (deletingProfile == false)
             {
-                SetHAndVResolutions(resolution);
+                string resolution = profileManager.ReadProfileSetting(clbProfiles.Text, "Settings.ScreenResolution");
+
+                if (resolution != "default")
+                {
+                    SetHAndVResolutions(resolution);
+                }
+                else
+                {
+                    profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.ScreenResolution", "1920x1080");
+                    SetHAndVResolutions(resolution);
+                }
+
+                void SetHAndVResolutions(string res)
+                {
+                    try
+                    {
+                        Console.WriteLine($"HRES: {res.Substring(0, res.Length - res.IndexOf('x'))}");
+                        txtHResolution.Text = res.Split('x')[0];
+                        txtVResolution.Text = res.Split('x')[1];
+                    }
+                    catch (Exception)
+                    {
+                        profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.ScreenResolution", $"{Screen.PrimaryScreen.Bounds.Width}x{ Screen.PrimaryScreen.Bounds.Height}");
+                    }
+                }
+
+                SetcbxGraphicsQuality();
             }
             else
             {
-                profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.ScreenResolution", "1920x1080");
-                SetHAndVResolutions(profileManager.ReadProfileSetting(clbProfiles.Text, "Settings.ScreenResolution"));
+                deletingProfile = false;
             }
-
-            void SetHAndVResolutions(string res)
-            {
-                try
-                {
-                    txtHResolution.Text = res.Substring(0, res.Length - res.IndexOf('x') - 1); //TODO figure out why 1280x720 is not working
-                    txtVResolution.Text = res.Substring(res.IndexOf('x') + 1, res.Length - (res.IndexOf('x') + 1));
-                }
-                catch (Exception)
-                {
-                    profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.ScreenResolution", $"{Screen.PrimaryScreen.Bounds.Width}x{ Screen.PrimaryScreen.Bounds.Height}");
-                }
-            }
-
-            SetcbxGraphicsQuality();
         }
 
         private void SetcbxGraphicsQuality()
@@ -201,12 +222,12 @@ namespace ElDewrito_Multi_Instance
         public void AddProfileToProfiles(string name)
         {
             clbProfiles.Items.Add(name);
-            lsbLaunchOrder.Items.Add(name);
+            lsbLaunchOrderItems.Add(name);
         }
 
         private void clbProfiles_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            lsbLaunchOrder.Items.Clear();
+            lsbLaunchOrderItems.Clear();
             File.Delete(processManager.Configuration);
 
             List<string> profileNames = clbProfiles.CheckedItems.OfType<string>().ToList<string>();
@@ -220,7 +241,7 @@ namespace ElDewrito_Multi_Instance
             {
                 for (int i = 0; i < profileNames.Count; i++)
                 {
-                    lsbLaunchOrder.Items.Add(profileNames[i]);
+                    lsbLaunchOrderItems.Add(profileNames[i]);
                     w.WriteLine(profileNames[i]);
 
                     if (Convert.ToBoolean(Convert.ToInt32(settingManager.KeyboardControlsP1)) == true && i == 0)
@@ -239,38 +260,38 @@ namespace ElDewrito_Multi_Instance
 
         private void btnMoveInstanceUp_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < lsbLaunchOrder.Items.Count; i++)
+            for (int i = 0; i < lsbLaunchOrderItems.Count; i++)
             {
-                if (lsbLaunchOrder.Items[i] == lsbLaunchOrder.SelectedItem && lsbLaunchOrder.SelectedIndex != 0)
+                if (lsbLaunchOrderItems[i] == lsbLaunchOrder.SelectedItem && lsbLaunchOrder.SelectedIndex != 0)
                 {
                     int newIndex = lsbLaunchOrder.SelectedIndex - 1;
 
-                    lsbLaunchOrder.Items.Insert(lsbLaunchOrder.SelectedIndex - 1, lsbLaunchOrder.Items[lsbLaunchOrder.SelectedIndex]);
-                    lsbLaunchOrder.Items.RemoveAt(lsbLaunchOrder.SelectedIndex);
+                    lsbLaunchOrderItems.Insert(lsbLaunchOrder.SelectedIndex - 1, lsbLaunchOrderItems[lsbLaunchOrder.SelectedIndex]);
+                    lsbLaunchOrderItems.RemoveAt(lsbLaunchOrder.SelectedIndex);
 
                     lsbLaunchOrder.SelectedIndex = newIndex;
                 }
             }
 
-            profileManager.WriteSelectedProfiles(lsbLaunchOrder.Items.OfType<string>().ToArray());
+            profileManager.WriteSelectedProfiles(lsbLaunchOrderItems.OfType<string>().ToArray());
         }
 
         private void btnMoveInstanceDown_Click(object sender, EventArgs e)
         {
-            for (int i = lsbLaunchOrder.Items.Count - 1; i >= 0; i--)
+            for (int i = lsbLaunchOrderItems.Count - 1; i >= 0; i--)
             {
-                if (lsbLaunchOrder.Items[i] == lsbLaunchOrder.SelectedItem && lsbLaunchOrder.SelectedIndex != lsbLaunchOrder.Items.Count - 1)
+                if (lsbLaunchOrderItems[i] == lsbLaunchOrder.SelectedItem && lsbLaunchOrder.SelectedIndex != lsbLaunchOrderItems.Count - 1)
                 {
                     int newIndex = lsbLaunchOrder.SelectedIndex + 1;
 
-                    lsbLaunchOrder.Items.Insert(lsbLaunchOrder.SelectedIndex + 2, lsbLaunchOrder.Items[lsbLaunchOrder.SelectedIndex]);
-                    lsbLaunchOrder.Items.RemoveAt(lsbLaunchOrder.SelectedIndex);
+                    lsbLaunchOrderItems.Insert(lsbLaunchOrder.SelectedIndex + 2, lsbLaunchOrderItems[lsbLaunchOrder.SelectedIndex]);
+                    lsbLaunchOrderItems.RemoveAt(lsbLaunchOrder.SelectedIndex);
 
                     lsbLaunchOrder.SelectedIndex = newIndex;
                 }
             }
             
-            profileManager.WriteSelectedProfiles(lsbLaunchOrder.Items.OfType<string>().ToArray());
+            profileManager.WriteSelectedProfiles(lsbLaunchOrderItems.OfType<string>().ToArray());
         }
 
         private void lblConsoleMode_Click(object sender, EventArgs e)
@@ -374,6 +395,11 @@ namespace ElDewrito_Multi_Instance
                 profileManager.WriteProfileSetting(clbProfiles.Text, "Settings.TextureResolution", cbxGraphicsQuality.Text);
             }
 
+        }
+
+        private void list_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            btnLaunch.Enabled = lsbLaunchOrderItems.Count == 0 ? false : true;
         }
     }
 }
