@@ -305,6 +305,7 @@
             this.lsbLaunchOrder.Name = "lsbLaunchOrder";
             this.lsbLaunchOrder.Size = new System.Drawing.Size(135, 225);
             this.lsbLaunchOrder.TabIndex = 13;
+            this.lsbLaunchOrder.KeyUp += new System.Windows.Forms.KeyEventHandler(this.lsbLaunchOrder_KeyUp);
             // 
             // btnMoveInstanceUp
             // 
@@ -352,6 +353,7 @@
             this.clbProfiles.TabIndex = 0;
             this.clbProfiles.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbProfiles_ItemCheck);
             this.clbProfiles.SelectedIndexChanged += new System.EventHandler(this.clbProfiles_SelectedIndexChanged);
+            this.clbProfiles.KeyUp += new System.Windows.Forms.KeyEventHandler(this.clbProfiles_KeyUp);
             // 
             // btnReloadProfiles
             // 

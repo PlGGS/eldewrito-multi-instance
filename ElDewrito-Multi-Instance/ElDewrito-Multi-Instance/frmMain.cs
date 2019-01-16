@@ -49,6 +49,11 @@ namespace ElDewrito_Multi_Instance
 
         private void btnRemoveProfile_Click(object sender, EventArgs e)
         {
+            RemoveProfileFromclbProfiles();
+        }
+
+        private void RemoveProfileFromclbProfiles()
+        {
             profileManager.DeleteProfilePrefs(clbProfiles.Text);
             lsbLaunchOrderItems.Remove(clbProfiles.Text);
 
@@ -227,34 +232,43 @@ namespace ElDewrito_Multi_Instance
 
         private void clbProfiles_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            lsbLaunchOrderItems.Clear();
-            File.Delete(processManager.Configuration);
-
-            List<string> profileNames = clbProfiles.CheckedItems.OfType<string>().ToList<string>();
-
-            if (e.NewValue == CheckState.Checked)
-                profileNames.Add(clbProfiles.Items[e.Index].ToString());
-            else
-                profileNames.Remove(clbProfiles.Items[e.Index].ToString());
-
-            using (StreamWriter w = new StreamWriter(processManager.Configuration))
+            if (clbProfiles.CheckedItems.Count < 8 || (clbProfiles.CheckedItems.Count == 8 && e.NewValue == CheckState.Unchecked))
             {
-                for (int i = 0; i < profileNames.Count; i++)
+                lsbLaunchOrderItems.Clear();
+                File.Delete(processManager.Configuration);
+
+                List<string> profileNames = clbProfiles.CheckedItems.OfType<string>().ToList<string>();
+
+                if (e.NewValue == CheckState.Checked)
+                    profileNames.Add(clbProfiles.Items[e.Index].ToString());
+                else
                 {
-                    lsbLaunchOrderItems.Add(profileNames[i]);
-                    w.WriteLine(profileNames[i]);
-
-                    if (Convert.ToBoolean(Convert.ToInt32(settingManager.KeyboardControlsP1)) == true && i == 0)
-                    {
-                        profileManager.WriteProfileSetting(profileNames[i], "Settings.Gamepad", "0");
-                    }
-                    else
-                    {
-                        profileManager.WriteProfileSetting(profileNames[i], "Settings.Gamepad", "1");
-                    }
-
-                    profileManager.WriteProfileSetting(profileNames[i], "Input.ControllerPort", i.ToString());
+                    profileNames.Remove(clbProfiles.Items[e.Index].ToString());
                 }
+
+                using (StreamWriter w = new StreamWriter(processManager.Configuration))
+                {
+                    for (int i = 0; i < profileNames.Count; i++)
+                    {
+                        lsbLaunchOrderItems.Add(profileNames[i]);
+                        w.WriteLine(profileNames[i]);
+
+                        if (Convert.ToBoolean(Convert.ToInt32(settingManager.KeyboardControlsP1)) == true && i == 0)
+                        {
+                            profileManager.WriteProfileSetting(profileNames[i], "Settings.Gamepad", "0");
+                        }
+                        else
+                        {
+                            profileManager.WriteProfileSetting(profileNames[i], "Settings.Gamepad", "1");
+                        }
+
+                        profileManager.WriteProfileSetting(profileNames[i], "Input.ControllerPort", i.ToString());
+                    }
+                }
+            }
+            else
+            {
+                e.NewValue = CheckState.Unchecked;
             }
         }
 
@@ -400,6 +414,22 @@ namespace ElDewrito_Multi_Instance
         private void list_ListChanged(object sender, ListChangedEventArgs e)
         {
             btnLaunch.Enabled = lsbLaunchOrderItems.Count == 0 ? false : true;
+        }
+
+        private void clbProfiles_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                RemoveProfileFromclbProfiles();
+            }
+        }
+
+        private void lsbLaunchOrder_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                
+            }
         }
     }
 }
