@@ -29,7 +29,9 @@ namespace ElDewrito_Multi_Instance
             InitializeComponent();
 
             Icon = Properties.Resources.logo;
-            executableDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
+
+            Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
+            executableDirectoryPath = $"{Environment.CurrentDirectory}\\";
 
             settingManager = new SettingManager(executableDirectoryPath);
             profileManager = new ProfileManager(executableDirectoryPath, settingManager, clbProfiles);
