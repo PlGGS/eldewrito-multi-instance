@@ -7,7 +7,7 @@ The current release allows anyone to easily manage multiple instance of ElDewrit
 ### No more 16GB installations.
 ### Run up to eight games at once.
 
-![screenshot](https://lh3.googleusercontent.com/1-KfSZALH3H7BzYQFdTymH0WGCNfpCp1QfmdxYigd1NFSgfve4mAkKNnzlygpRVp9HZRZ8oZc6vw996SqQ=w1000-no-tmp.jpg)
+![screenshot](https://camo.githubusercontent.com/1dd248d0d4684a6bc9fb5ee0046874702bb89969/68747470733a2f2f62626c616b652e696e666f2f6173736574732f456c4465777269746f4d756c7469496e7374616e63652e706e67)
 
 #### Simply drop the executable in your Halo Online folder and run it.
 
