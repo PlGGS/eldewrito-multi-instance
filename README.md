@@ -14,6 +14,28 @@ The current release allows anyone to easily manage multiple instance of ElDewrit
 
 All player customization is now done in game, and in order to play locally, the first instance that launches must host the lobby. The biggest new feature in this release is the ability to run up to **eight** instances of the game at once if your PC can handle it.
 
-Features like **console mode** and **mass server connect** are in the works, but for now, here's a stable solution for "split screen" in Eldewrito 0.6.
+## Installation and use in ten easy steps:
 
-#### Please report any and all issues you come across. Thanks.
+Before installing Eldewrito Multi Instance, please make sure you already have the game files for Eldewrito 0.6.1.0.
+
+##### 1. Download [the executable file](https://github.com/PlGGS/ElDewrito-Multi-Instance/releases/download/0.1.0.0b/ElDewrito-Multi-Instance.exe) of [the newest release](https://github.com/PlGGS/ElDewrito-Multi-Instance/releases)
+
+##### 2. Simply place the file in your Eldewrito installation directory.
+
+##### 3. Run the file, and you will notice that it will either use yours or create a new preferences file depending on whether or not you've played the game yet.
+
+##### 4. For additional players, simply click the 'Add Profile' button to create a new preferences file for their specified username.
+
+##### 5. Check the usernames for the players that want to play.
+
+##### 6. Set profile-specific settings like window resolution for each profile. 
+
+##### 7. Change the order of which players' instances will launch if necessary using the 'Move up' and 'Move down' buttons.
+
+##### 8. Set universal settings (Fullscreen supports multiple displays)
+
+##### 9. Click launch! (Move windows apart from one another if necessary)
+
+##### 10. Congratulate yourself! It's time to sit back, relax, and enjoy some Eldewrito with friends on one computer!
+
+#### Please report any and all issues you come across in the Issues tab, and I'll be sure to get back to you.
