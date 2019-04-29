@@ -30,7 +30,7 @@ Before installing Eldewrito Multi Instance, please make sure you running an OS t
 ##### 4. For additional players, simply click the 'Add Profile' button to create a new preferences file for their specified username.
 ![add profile img](https://camo.githubusercontent.com/c4cc99a08b0847157febbafc1025436562d0b2a9/68747470733a2f2f62626c616b652e696e666f2f6173736574732f61646450726f66696c65454d492e706e67)
 
-##### 5. Check the usernames for the players that want to play.
+##### 5. Check the checkboxes next to the usernames of the players that wish to play.
 ![check profiles img](https://camo.githubusercontent.com/c956ebede73b5843eb4592a6a909680dd8489a08/68747470733a2f2f62626c616b652e696e666f2f6173736574732f636865636b50726f66696c6573454d492e706e67)
 
 ##### 6. Set profile-specific settings like window resolution for each profile. 
@@ -46,4 +46,10 @@ Before installing Eldewrito Multi Instance, please make sure you running an OS t
 
 ##### 10. Congratulate yourself! It's time to sit back, relax, and enjoy some Eldewrito with friends on one computer!
 
-#### Please report any and all issues you come across in the Issues tab, and I'll be sure to get back to you.
+#### Please report any issues you come across in the Issues tab, and I'll be sure to get back to you.
+
+### Help with common issues/questions:
+
+##### If your PC warns agaist running Eldewrito Multi Instance, simply select 'More info' and then 'Run anyway'.
+##### If your instances aren't loading at your specified resolution, you must set up a new custom resolution in either Nvidia control panel or AMD's equivilent application before playing.
+##### To avoid confusion, the 'Kb / m controls P1' checkbox determines whether or not the first player in the launch order launches with keyboard and mouse controls by default.
