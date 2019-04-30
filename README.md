@@ -50,6 +50,6 @@ Before installing Eldewrito Multi Instance, please make sure you running an OS t
 
 ### Help with common issues/questions:
 
-##### If your PC warns agaist running Eldewrito Multi Instance, simply select 'More info' and then 'Run anyway'.
-##### If your instances aren't loading at your specified resolution, you must set up a new custom resolution in either Nvidia control panel or AMD's equivilent application before playing.
+##### If your PC warns against running Eldewrito Multi Instance, simply select 'More info' and then 'Run anyway'.
+##### If your instances aren't loading at your specified resolution, you must set up a new custom resolution in either Nvidia control panel or AMD's equivalent application before playing.
 ##### To avoid confusion, the 'Kb / m controls P1' checkbox determines whether or not the first player in the launch order launches with keyboard and mouse controls by default.
